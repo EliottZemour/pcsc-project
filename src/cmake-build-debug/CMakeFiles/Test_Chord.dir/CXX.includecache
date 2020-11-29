@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/cyrilvallez/Desktop/MA1/pcsc/Project/Chord_Solver.cpp
+NLE_Solver.hpp
+/Users/cyrilvallez/Desktop/MA1/pcsc/Project/NLE_Solver.hpp
+Chord_Solver.hpp
+/Users/cyrilvallez/Desktop/MA1/pcsc/Project/Chord_Solver.hpp
+cmath
+-
+iostream
+-
+
+/Users/cyrilvallez/Desktop/MA1/pcsc/Project/Chord_Solver.hpp
+NLE_Solver.hpp
+/Users/cyrilvallez/Desktop/MA1/pcsc/Project/NLE_Solver.hpp
+
+/Users/cyrilvallez/Desktop/MA1/pcsc/Project/NLE_Solver.hpp
+
