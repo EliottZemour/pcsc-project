@@ -6,8 +6,8 @@
  * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch> <--- Fill in your name
  */
 
-#include "NLE_Solver.hpp"
 #include "Chord_Solver.hpp"
+#include "NLE_Solver.hpp"
 #include <iostream>
 #include <cmath>
 
