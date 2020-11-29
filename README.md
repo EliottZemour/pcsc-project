@@ -1,1 +1,1 @@
-## Programming Concepts in Scientific Computing - Project 5: Non-linear systems
+## PCSC - Project 5: Non-linear systems
