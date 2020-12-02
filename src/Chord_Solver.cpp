@@ -48,12 +48,13 @@ double Chord_Solver::Solve() const
             current = next;
             break;
         }
+        /*
         if (abs(next-current) >= abs(current-previous) and i>1)
         {
             std::cout << "Solution is diverging : find better initial guess" << std::endl;
             break;
         }
-
+        */
         previous = current;
         current = next;
         next = current - (current-previous)/(f(current)-f(previous))*f(current);
