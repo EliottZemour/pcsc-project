@@ -34,6 +34,8 @@ int main(int argc, char *argv[]) {
     std::cout << "The numerical result is " << res << std::endl;
     std::cout << "The exact result is " << pow(2., 1./3.) << std::endl;
 
+    delete solver;
+
 
   return 0;
 }

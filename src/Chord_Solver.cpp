@@ -22,6 +22,7 @@ Chord_Solver::Chord_Solver(int iterations, double epsilon, double initial_guess,
 : NLE_Solver(iterations, epsilon, initial_guess, function) {}
 
 // Destructor
+// vbhcbhqczh   czbmbzh
 Chord_Solver::~Chord_Solver() {}
 
 double Chord_Solver::Solve() const
