@@ -4,7 +4,6 @@
         * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch>
 */
 
-#include "Exception.hpp"
 #include "ConvergenceException.hpp"
 #include <string>
 

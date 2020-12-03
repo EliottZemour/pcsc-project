@@ -22,3 +22,7 @@ add_custom_target(test ./test_pcsc DEPENDS test_pcsc)
 
 add_executable(Test_Chord src/Test_Chord_Solver.cpp src/Chord_Solver.cpp
 src/NLE_Solver.cpp)
+
+add_executable(Test_Newton src/Test_Newton_Solver.cpp src/Newton_Solver.cpp
+src/NLE_Solver.cpp src/exc/Exception.cpp src/exc/DivBy0Exception.cpp
+Src/exc/InitializationException.cpp)

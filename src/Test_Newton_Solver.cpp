@@ -1,13 +1,12 @@
 /*
  *
- * Test of the Chord Solver
+ * Test of the Newton Solver
  *
  * Created on: September 02, 2015 <--- Fill in the date here
  * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch> <--- Fill in your name
  */
 
-#include "Chord_Solver.hpp"
-#include "NLE_Solver.hpp"
+#include "Newton_Solver.hpp"
 #include <iostream>
 #include <cmath>
 
@@ -16,16 +15,20 @@ double function (double x)
     return x*x*x - 2.;
 }
 
+double function_prime (double x)
+{
+    return 3*x*x;
+}
+
 int main(int argc, char *argv[]) {
 
     double tol = 1e-3;
-    int max_iter = 200;
+    int max_iter = 100;
     double (*func)(double x) = &function;
-    double guess = 20000;
+    double (*func_p)(double x) = &function_prime;
+    double guess = 1e10;
 
-    NLE_Solver* solver = new Chord_Solver(max_iter, tol, guess, func);
-
-    double res = solver->Solve();
+    double res = Solve_Newton(max_iter, tol, guess, func, func_p);
 
     std::cout.setf(std::ios::scientific);
     std::cout.setf(std::ios::showpos);
@@ -33,25 +36,6 @@ int main(int argc, char *argv[]) {
 
     std::cout << "The numerical result is " << res << std::endl;
     std::cout << "The exact result is " << pow(2., 1./3.) << std::endl;
-
-    delete solver;
-
-    double t = 1e-15;
-    double s = 1e10;
-    double k = exp(10000);
-
-    std::cout << "Test : " << s/t << std::endl;
-    std::cout << k << std::endl;
-
-    if (s < k)
-    {
-        std::cout << "Passed" << std::endl;
-    }
-    else
-    {
-        std::cout << "Failed" << std::endl;
-    }
-
 
   return 0;
 }
