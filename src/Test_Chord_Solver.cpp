@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
     double tol = 1e-3;
     int max_iter = 200;
     double (*func)(double x) = &function;
-    double guess = 2.9;
+    double guess = 20000;
 
     NLE_Solver* solver = new Chord_Solver(max_iter, tol, guess, func);
 

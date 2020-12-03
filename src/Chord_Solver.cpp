@@ -4,7 +4,6 @@
         * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch>
 */
 
-#include "NLE_Solver.hpp"
 #include "Chord_Solver.hpp"
 #include <cmath>
 #include <iostream>
@@ -22,9 +21,9 @@ Chord_Solver::Chord_Solver(int iterations, double epsilon, double initial_guess,
 : NLE_Solver(iterations, epsilon, initial_guess, function) {}
 
 // Destructor
-// vbhcbhqczh   czbmbzh
 Chord_Solver::~Chord_Solver() {}
 
+// Override of the solve function
 double Chord_Solver::Solve() const
 {
     double current = guess;
@@ -43,14 +42,15 @@ double Chord_Solver::Solve() const
             current = next;
             break;
         }
-        if (abs(next-current)<tolerance)
+        if (fabs(next-current)<tolerance)
         {
             std::cout << "Stopped because the solution has converged within the given tolerance" << std::endl;
+            std::cout << "Nombre d'iterations : " << i << std::endl;
             current = next;
             break;
         }
         /*
-        if (abs(next-current) >= abs(current-previous) and i>1)
+        if (fabs(next-current) >= fabs(current-previous) and i>1)
         {
             std::cout << "Solution is diverging : find better initial guess" << std::endl;
             break;
@@ -58,9 +58,16 @@ double Chord_Solver::Solve() const
         */
         previous = current;
         current = next;
-        next = current - (current-previous)/(f(current)-f(previous))*f(current);
+        double denominator = f(current)-f(previous);
+        if (denominator < 1e-15)
+        {
+            std::cout << "Division by 0" << std::endl;
+        }
+        next = current - (current-previous)/denominator*f(current);
         i += 1;
+
     }
+    std::cout << current << std::endl;
 
     return current;
 
