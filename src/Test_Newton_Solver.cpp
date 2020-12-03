@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
     int max_iter = 100;
     double (*func)(double x) = &function;
     double (*func_p)(double x) = &function_prime;
-    double guess = 1e10;
+    double guess = 10;
 
     double res = Solve_Newton(max_iter, tol, guess, func, func_p);
 
