@@ -22,4 +22,8 @@ public:
     double Solve() const override;
 };
 
+// Functions to solve the problem, handling exceptions
+double Solve_Chord (double initial_guess, double (*fun)(double x));
+double Solve_Chord (int iterations, double epsilon, double initial_guess, double (*fun)(double x));
+
 #endif
