@@ -7,8 +7,6 @@
 #IncludeRegexTransform: 
 
 /Users/cyrilvallez/Desktop/MA1/pcsc/pcsc-project/src/Chord_Solver.cpp
-NLE_Solver.hpp
-/Users/cyrilvallez/Desktop/MA1/pcsc/pcsc-project/src/NLE_Solver.hpp
 Chord_Solver.hpp
 /Users/cyrilvallez/Desktop/MA1/pcsc/pcsc-project/src/Chord_Solver.hpp
 cmath
