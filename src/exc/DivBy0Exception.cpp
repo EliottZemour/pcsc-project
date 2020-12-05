@@ -4,7 +4,6 @@
         * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch>
 */
 
-#include "Exception.hpp"
 #include "DivBy0Exception.hpp"
 #include <string>
 

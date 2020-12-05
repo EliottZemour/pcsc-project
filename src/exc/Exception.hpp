@@ -25,6 +25,10 @@ protected:
     // Constructor
     Exception(std::string tag_, std::string problem_);
 
+    // Getters
+    std::string GetTag () const {return tag;}
+    std::string GetProblem () const {return problem;}
+
     // Method
     void PrintDebug () const;
 

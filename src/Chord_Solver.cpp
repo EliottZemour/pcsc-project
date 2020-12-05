@@ -5,6 +5,7 @@
 */
 
 #include "Chord_Solver.hpp"
+#include "exc/DivBy0Exception.hpp"
 #include <cmath>
 #include <iostream>
 
@@ -45,17 +46,10 @@ double Chord_Solver::Solve() const
         if (fabs(next-current)<tolerance)
         {
             std::cout << "Stopped because the solution has converged within the given tolerance" << std::endl;
-            std::cout << "Nombre d'iterations : " << i << std::endl;
             current = next;
             break;
         }
-        /*
-        if (fabs(next-current) >= fabs(current-previous) and i>1)
-        {
-            std::cout << "Solution is diverging : find better initial guess" << std::endl;
-            break;
-        }
-        */
+
         previous = current;
         current = next;
         double denominator = f(current)-f(previous);
@@ -67,8 +61,41 @@ double Chord_Solver::Solve() const
         i += 1;
 
     }
-    std::cout << current << std::endl;
 
     return current;
 
+}
+
+double Solve_Chord (double initial_guess, double (*fun)(double x))
+{
+    NLE_Solver* solver = new Chord_Solver(initial_guess, fun);
+    double solution = -1;
+
+    try
+    {
+        solution = solver->Solve();
+    }
+    catch (Exception &error)
+    {
+        error.PrintDebug();
+    }
+    delete solver;
+    return solution;
+}
+
+double Solve_Chord (int iterations, double epsilon, double initial_guess, double (*fun)(double x))
+{
+    NLE_Solver* solver = new Chord_Solver(iterations, epsilon, initial_guess, fun);
+    double solution = -1;
+
+    try
+    {
+        solution = solver->Solve();
+    }
+    catch (Exception &error)
+    {
+        error.PrintDebug();
+    }
+    delete solver;
+    return solution;
 }
