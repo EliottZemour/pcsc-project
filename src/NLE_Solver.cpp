@@ -11,7 +11,11 @@ NLE_Solver::NLE_Solver()
 : max_iter(100), tolerance(1e-3), guess(0.), f(0) {}
 
 // Constructor
-NLE_Solver::NLE_Solver(double initial_guess, double (*function)(double))
+NLE_Solver::NLE_Solver(double (*function)(double x))
+: max_iter(100), tolerance(1e-3), guess(0.), f(function) {}
+
+// Constructor
+NLE_Solver::NLE_Solver(double initial_guess, double (*function)(double x))
 : max_iter(100), tolerance(1e-3), guess(initial_guess), f(function) {}
 
 // Constructor
