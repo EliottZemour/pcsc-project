@@ -20,6 +20,8 @@ add_custom_target(test ./test_pcsc DEPENDS test_pcsc)
 
 ##############################################################
 
+add_executable(Test_Bisection src/Test_Bisection_Solver.cpp src/Bisection_Solver.cpp src/NLE_Solver.cpp)
+
 add_executable(Test_Chord src/Test_Chord_Solver.cpp src/Chord_Solver.cpp
 src/NLE_Solver.cpp src/exc/Exception.cpp src/exc/DivBy0Exception.cpp)
 

@@ -18,6 +18,8 @@ protected:
 public:
     // Constructor and destructor
     NLE_Solver();
+
+    NLE_Solver(double (*function)(double x));
     NLE_Solver(double initial_guess, double (*function)(double x));
     NLE_Solver(int iterations, double epsilon, double initial_guess, double (*function)(double x));
     virtual ~NLE_Solver();
