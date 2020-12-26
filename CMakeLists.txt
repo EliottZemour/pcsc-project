@@ -27,3 +27,5 @@ src/NLE_Solver.cpp src/Solver.cpp src/exc/Exception.cpp src/exc/DivBy0Exception.
 
 add_executable(Test_Newton src/Test_Newton_Solver.cpp src/Newton_Solver.cpp
 src/NLE_Solver.cpp src/Solver.cpp src/exc/Exception.cpp src/exc/DivBy0Exception.cpp)
+
+add_executable(Test_System_Newton src/Test_Newton_System_Solver.cpp src/Newton_System_Solver.cpp src/NLS_Solver.cpp src/Solver.cpp)
