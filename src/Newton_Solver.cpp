@@ -17,37 +17,37 @@ Newton_Solver::Newton_Solver()
 
 // Constructor
 Newton_Solver::Newton_Solver(double initial_guess, double (*fun)(double x), double (*fun_p)(double x))
-: NLE_Solver(initial_guess, fun), f_prime(fun_p)
+: NLE_Solver(initial_guess, fun)
 {
-    if (f_prime == nullptr)
-    {
-        std::string problem("The pointer on the derivative of the function to solve for is null");
-        std::cerr << "** Error (" << "Initialization" << ") **" << std::endl;
-        std::cerr << "Problem : " << problem << std::endl << std::endl;
-        std::cerr << "Please re-run providing a correct pointer" << std::endl;
-        std::cerr.flush();
-        exit(EXIT_FAILURE);
-    }
+    SetDerivative(fun_p);
 }
 
 // Constructor
 Newton_Solver::Newton_Solver(int iterations, double epsilon, double initial_guess, double (*fun)(double x),
                              double (*fun_p)(double x))
-: NLE_Solver(iterations, epsilon, initial_guess, fun), f_prime(fun_p)
+: NLE_Solver(iterations, epsilon, initial_guess, fun)
 {
+    SetDerivative(fun_p);
+}
+
+// Destructor
+Newton_Solver::~Newton_Solver() {}
+
+
+//Setter
+void Newton_Solver::SetDerivative(double (*fun_p)(double))
+{
+    f_prime = fun_p;
+
     if (f_prime == nullptr)
     {
         std::string problem("The pointer on the derivative of the function to solve for is null");
-        std::cerr << "** Error (" << "Initialization" << ") **" << std::endl;
-        std::cerr << "Problem : " << problem << std::endl << std::endl;
+        std::cerr << "Problem : " << problem << std::endl;
         std::cerr << "Please re-run providing a correct pointer" << std::endl;
         std::cerr.flush();
         exit(EXIT_FAILURE);
     }
 }
-
-// Destructor
-Newton_Solver::~Newton_Solver() {}
 
 // Override of the solve function
 double Newton_Solver::Solve() const

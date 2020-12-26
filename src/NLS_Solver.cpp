@@ -1,50 +1,59 @@
 /*
-* Base class for non-linear equations solver
+* Base class for systems of non-linear equations solver
         *
         * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch>
 */
 
-#include "NLE_Solver.hpp"
+#include "NLS_Solver.hpp"
 #include <string>
 #include <iostream>
 #include <cstdlib>
 
+// ######################## Functions and overload ####################
+
+vector operator* (matrix A, vector b)
+{
+    int matrix_size = A.size();
+    int vector_size = b.size();
+}
+
+// ######################## Class methods ##############################
+
 // Default Constructor
-NLE_Solver::NLE_Solver()
+NLS_Solver::NLS_Solver()
 : Solver(), guess(0.), f(nullptr) {}
 
 // Constructor
-NLE_Solver::NLE_Solver(double (*function)(double x))
+NLS_Solver::NLS_Solver(vector (*function)(vector x))
 : Solver(), guess(0.)
 {
     SetFunction(function);
 }
 
 // Constructor
-NLE_Solver::NLE_Solver(double initial_guess, double (*function)(double))
+NLS_Solver::NLS_Solver(vector initial_guess, vector (*function)(vector x))
 : Solver(), guess(initial_guess)
 {
     SetFunction(function);
 }
 
 // Constructor
-NLE_Solver::NLE_Solver(int iterations, double epsilon, double initial_guess, double (*function)(double x))
+NLS_Solver::NLS_Solver(int iterations, double epsilon, vector initial_guess, vector (*function)(vector x))
 : Solver(iterations, epsilon), guess(initial_guess)
 {
     SetFunction(function);
 }
 
 // Destructor
-NLE_Solver::~NLE_Solver() {}
-
+NLS_Solver::~NLS_Solver() {}
 
 // Setter
-void NLE_Solver::SetGuess(double initial_guess)
+void NLS_Solver::SetGuess(vector initial_guess)
 {
     guess = initial_guess;
 }
 
-void NLE_Solver::SetFunction(double (*function)(double))
+void NLS_Solver::SetFunction(vector (*function)(vector))
 {
     f = function;
 

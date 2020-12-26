@@ -7,32 +7,27 @@
 #ifndef NLE_SOLVER_H
 #define NLE_SOLVER_H
 
-class NLE_Solver
+#include "Solver.hpp"
+
+class NLE_Solver : public Solver
 {
 protected:
-    int max_iter;
-    double tolerance;
     double guess;
     double (*f)(double x);
 
 public:
     // Constructor and destructor
     NLE_Solver();
-
     NLE_Solver(double (*function)(double x));
     NLE_Solver(double initial_guess, double (*function)(double x));
     NLE_Solver(int iterations, double epsilon, double initial_guess, double (*function)(double x));
     virtual ~NLE_Solver();
 
     // Setters
-    void SetMaxIter(int iter) {max_iter = iter;}
-    void SetTolerance(double epsilon) {tolerance = epsilon;}
-    void SetGuess(double initial_guess) {guess = initial_guess;}
-    void SetFunction(double (*function)(double x)) {f = function;}
+    void SetGuess(double initial_guess);
+    void SetFunction(double (*function)(double x));
 
     // Getters
-    int GetMaxIter () const {return max_iter;}
-    double GetTolerance() const {return tolerance;}
     double GetGuess () const {return guess;}
     double EvaluateFunction (double x) const {return f(x);}
 

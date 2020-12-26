@@ -22,8 +22,8 @@ double function_prime (double x)
 
 int main(int argc, char *argv[]) {
 
-    double tol = 1e-3;
-    int max_iter = 100;
+    double tol = -2;
+    int max_iter = -5;
     double (*func)(double x) = &function;
     double (*func_p)(double x) = &function_prime;
     double guess = 10;

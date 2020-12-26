@@ -22,6 +22,12 @@ public:
                   double (*fun_p)(double x));
     virtual ~Newton_Solver();
 
+    // Setter
+    void SetDerivative(double (*fun_p)(double x));
+
+    // Getter
+    double EvaluateDerivative (double x) const {return f_prime(x);}
+
     // Override of the solve function
     double Solve() const override;
 };

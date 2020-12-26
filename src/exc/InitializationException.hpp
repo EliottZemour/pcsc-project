@@ -7,8 +7,6 @@
 #ifndef INITIALIZATIONEXCEPTION_H
 #define INITIALIZATIONEXCEPTION_H
 
-#include <iostream>
-#include <string>
 #include "Exception.hpp"
 
 class InitializationException : public Exception {
