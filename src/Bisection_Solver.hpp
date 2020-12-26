@@ -19,9 +19,15 @@ public:
     // Solve method
     double Solve() const override;
 
+    // Setters
+    void SetEdges(double LeftEdge, double RightEdge);
+
 private:
     double left, right;
 };
+
+// Functions to solve the problem, handling exceptions
+double Solve_Bisection(double (*function)(double x), double LeftEdge, double RightEdge);
 
 
 #endif //BISECTION_H

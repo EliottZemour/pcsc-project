@@ -5,6 +5,7 @@
 #include "Bisection_Solver.hpp"
 #include <cmath>
 #include <iostream>
+#include "exc/DivBy0Exception.hpp"
 
 // Default Constructor
 Bisection_Solver::Bisection_Solver()
@@ -16,41 +17,7 @@ Bisection_Solver::Bisection_Solver()
 Bisection_Solver::Bisection_Solver(double (*function)(double), double LeftEdge, double RightEdge)
         : NLE_Solver(function)
         {
-            double f_l = function(LeftEdge);
-            double f_r = function(RightEdge);
-            if (f_l * f_r < 0) {
-                if ((f_l < 0) && (f_r > 0)) {
-                    left = LeftEdge;
-                    right = RightEdge;
-                }
-                else // Swap the edges ==> convenient for Solve() method (need f_l < 0 and f_r > 0)
-                {
-                    left = RightEdge;
-                    right = LeftEdge;
-                }
-            }
-            else // that is f_l * f_r >= 0
-            {
-                do
-                {
-                    std::cout << "Bisection edges are invalid, please enter other edges" << std::endl;
-                    std::cout << "Left edge:";
-                    std::cin >> LeftEdge;
-                    std::cout << "Right edge:";
-                    std::cin >> RightEdge;
-                    f_l = f(LeftEdge);
-                    f_r = f(RightEdge);
-                } while (f_l * f_r >= 0);
-                if ((f_l < 0) && (f_r > 0)) {
-                    left = LeftEdge;
-                    right = RightEdge;
-                }
-                else // Swap the edges ==> convenient for Solve() method (need f_l < 0 and f_r > 0)
-                {
-                    left = RightEdge;
-                    right = LeftEdge;
-                }
-            }
+            SetEdges(LeftEdge, RightEdge);
         }
 
 // Destructor
@@ -87,4 +54,57 @@ double Bisection_Solver::Solve() const
         }
     }
     return mid;
+}
+
+// Setters
+void Bisection_Solver::SetEdges(double LeftEdge, double RightEdge) {
+    double f_l = f(LeftEdge);
+    double f_r = f(RightEdge);
+    if (f_l * f_r < 0) {
+        if ((f_l < 0) && (f_r > 0)) {
+            left = LeftEdge;
+            right = RightEdge;
+        }
+        else // Swap the edges ==> convenient for Solve() method (need f_l < 0 and f_r > 0)
+        {
+            left = RightEdge;
+            right = LeftEdge;
+        }
+    }
+    else // that is f_l * f_r >= 0
+    {
+        do
+        {
+            std::string problem("Bisection edges are invalid: f(LeftEdge) * f(RightEdge) >= 0");
+            std::cerr << problem << "\n";
+            std::cerr.flush();
+            std::cerr << "Please enter other edges\n";
+            std::cerr.flush();
+            std::cout << "Left edge: ";
+            std::cin >> LeftEdge;
+            std::cout << "Right edge: ";
+            std::cout.flush();
+            std::cin >> RightEdge;
+            f_l = f(LeftEdge);
+            f_r = f(RightEdge);
+        } while (f_l * f_r >= 0);
+        if ((f_l < 0) && (f_r > 0)) {
+            left = LeftEdge;
+            right = RightEdge;
+        }
+        else // Swap the edges ==> convenient for Solve() method (need f_l < 0 and f_r > 0)
+        {
+            left = RightEdge;
+            right = LeftEdge;
+        }
+    }
+}
+
+double Solve_Bisection(double (*function)(double), double LeftEdge, double RightEdge) {
+    NLE_Solver* solver = new Bisection_Solver(function, LeftEdge, RightEdge);
+    double solution = -1;
+    solution = solver->Solve();
+
+    delete solver;
+    return solution;
 }
