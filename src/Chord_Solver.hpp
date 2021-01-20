@@ -8,6 +8,7 @@
 #define CHORD_SOLVER_H
 
 #include "NLE_Solver.hpp"
+#include "Aitken_Accelerator.hpp"
 
 class Chord_Solver : public NLE_Solver
 {
@@ -19,11 +20,12 @@ public:
     virtual ~Chord_Solver();
 
     // Override of the solve function
-    double Solve() const override;
+    double Solve(bool acc) const override;
 };
 
 // Functions to solve the problem, handling exceptions
-double Solve_Chord (double initial_guess, double (*fun)(double x));
-double Solve_Chord (int iterations, double epsilon, double initial_guess, double (*fun)(double x));
+double Solve_Chord (double initial_guess, double (*fun)(double x), bool acc);
+double Solve_Chord (int iterations, double epsilon, double initial_guess, double (*fun)(double x), bool acc);
+
 
 #endif

@@ -25,14 +25,18 @@ Chord_Solver::Chord_Solver(int iterations, double epsilon, double initial_guess,
 Chord_Solver::~Chord_Solver() {}
 
 // Override of the solve function
-double Chord_Solver::Solve() const
+double Chord_Solver::Solve(bool acc = false) const
 {
     double current = guess;
     double next = 0.;
     double previous = 0.;
     int i = 0;
-
     next = current - f(current);
+    if(acc)
+    {
+        double nextnext = next - f(next);
+        next = Accelerate(current, next, nextnext);
+    }
     i += 1;
 
     while (true)
@@ -46,6 +50,7 @@ double Chord_Solver::Solve() const
         if (fabs(next-current)<tolerance)
         {
             std::cout << "Stopped because the solution has converged within the given tolerance" << std::endl;
+            std::cout << "iteration #" << i << std::endl;
             current = next;
             break;
         }
@@ -58,22 +63,27 @@ double Chord_Solver::Solve() const
             std::cout << "Division by 0" << std::endl;
         }
         next = current - (current-previous)/denominator*f(current);
+        if(acc)
+        {
+            denominator = f(next) - f(current);
+            double nextnext = next - (next-current)/denominator*f(next);
+            next = Accelerate(current, next, nextnext);
+        }
         i += 1;
-
     }
 
     return current;
 
 }
 
-double Solve_Chord (double initial_guess, double (*fun)(double x))
+double Solve_Chord (double initial_guess, double (*fun)(double x), bool acc)
 {
     NLE_Solver* solver = new Chord_Solver(initial_guess, fun);
     double solution = -1;
 
     try
     {
-        solution = solver->Solve();
+        solution = solver->Solve(acc);
     }
     catch (Exception &error)
     {
@@ -83,14 +93,14 @@ double Solve_Chord (double initial_guess, double (*fun)(double x))
     return solution;
 }
 
-double Solve_Chord (int iterations, double epsilon, double initial_guess, double (*fun)(double x))
+double Solve_Chord (int iterations, double epsilon, double initial_guess, double (*fun)(double x), bool acc)
 {
     NLE_Solver* solver = new Chord_Solver(iterations, epsilon, initial_guess, fun);
     double solution = -1;
 
     try
     {
-        solution = solver->Solve();
+        solution = solver->Solve(acc);
     }
     catch (Exception &error)
     {
@@ -99,3 +109,4 @@ double Solve_Chord (int iterations, double epsilon, double initial_guess, double
     delete solver;
     return solution;
 }
+
