@@ -62,7 +62,7 @@ double Newton_Solver::Solve() const
 
         if (fabs(denominator) < 1e-15 )
         {
-            std::string error("Evaluation of the next approximation is diverging");
+            std::string error("Derivative is 0 at the actual approximation of the root, try with a new initial guess");
             throw DivBy0Exception(error);
         }
 

@@ -53,9 +53,10 @@ double Chord_Solver::Solve() const
         previous = current;
         current = next;
         double denominator = f(current)-f(previous);
-        if (denominator < 1e-15)
+        if (fabs(denominator) < 1e-15)
         {
-            std::cout << "Division by 0" << std::endl;
+            std::string error("Division by 0 encountered while updating the approximation of the root, try a new initial guess");
+            throw DivBy0Exception(error);
         }
         next = current - (current-previous)/denominator*f(current);
         i += 1;
