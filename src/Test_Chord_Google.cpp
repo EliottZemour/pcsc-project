@@ -6,7 +6,6 @@
 #include <iostream>
 #include <cmath>
 #include <gtest/gtest.h>
-#include <exception>
 
 double function_xcube (double x)
 {
