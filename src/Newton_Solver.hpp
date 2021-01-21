@@ -30,12 +30,12 @@ public:
     double EvaluateDerivative (double x) const {return f_prime(x);}
 
     // Override of the solve function
-    double Solve(bool acc) const override;
+    double Solve(bool acc = false) const override;
 };
 
 // Functions to solve the problem, handling exceptions
-double Solve_Newton (double initial_guess, double (*fun)(double x), double (*fun_p)(double x), bool acc);
+double Solve_Newton (double initial_guess, double (*fun)(double x), double (*fun_p)(double x), bool acc = false);
 double Solve_Newton (int iterations, double epsilon, double initial_guess, double (*fun)(double x),
-                     double (*fun_p)(double x), bool acc);
+                     double (*fun_p)(double x), bool acc = false);
 
 #endif

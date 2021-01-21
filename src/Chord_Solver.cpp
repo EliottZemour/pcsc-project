@@ -8,6 +8,7 @@
 #include "exc/DivBy0Exception.hpp"
 #include <cmath>
 #include <iostream>
+#include "Aitken_Accelerator.hpp"
 
 // Default Constructor
 Chord_Solver::Chord_Solver()
@@ -25,7 +26,7 @@ Chord_Solver::Chord_Solver(int iterations, double epsilon, double initial_guess,
 Chord_Solver::~Chord_Solver() {}
 
 // Override of the solve function
-double Chord_Solver::Solve(bool acc = false) const
+double Chord_Solver::Solve(bool acc) const
 {
     double current = guess;
     double next = 0.;

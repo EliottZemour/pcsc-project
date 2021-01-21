@@ -24,7 +24,7 @@ add_custom_target(test ./test_pcsc DEPENDS test_pcsc)
 add_executable(Test_Bisection src/Test_Bisection_Solver.cpp src/Bisection_Solver.cpp src/NLE_Solver.cpp src/Solver.cpp)
 target_link_libraries(Test_Bisection gtest_main gtest pthread pcsc)
 
-add_executable(Test_Chord_Google src/Test_Chord_Google.cpp src/Chord_Solver.cpp src/NLE_Solver.cpp src/Solver.cpp src/exc/Exception.cpp src/exc/DivBy0Exception.cpp)
+add_executable(Test_Chord_Google src/Test_Chord_Google.cpp src/Chord_Solver.cpp src/NLE_Solver.cpp src/Solver.cpp src/exc/Exception.cpp src/exc/DivBy0Exception.cpp src/Aitken_Accelerator.cpp)
 target_link_libraries(Test_Chord_Google gtest_main gtest pthread pcsc)
 
 add_executable(Test_Chord src/Test_Chord_Solver.cpp src/Chord_Solver.cpp
@@ -38,5 +38,4 @@ add_executable(Test_System_Newton src/Test_Newton_System_Solver.cpp src/Newton_S
 
 add_executable(Test_Aitken_Accelerator src/Test_Aitken_Accelerator.cpp src/Aitken_Accelerator.cpp)
 
-add_executable(Test_System_Newton src/Test_Newton_System_Solver.cpp src/Newton_System_Solver.cpp src/NLS_Solver.cpp src/Solver.cpp)
 

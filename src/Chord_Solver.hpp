@@ -20,12 +20,12 @@ public:
     virtual ~Chord_Solver();
 
     // Override of the solve function
-    double Solve(bool acc) const override;
+    double Solve(bool acc = false) const override;
 };
 
 // Functions to solve the problem, handling exceptions
-double Solve_Chord (double initial_guess, double (*fun)(double x), bool acc);
-double Solve_Chord (int iterations, double epsilon, double initial_guess, double (*fun)(double x), bool acc);
+double Solve_Chord (double initial_guess, double (*fun)(double x), bool acc = false);
+double Solve_Chord (int iterations, double epsilon, double initial_guess, double (*fun)(double x), bool acc = false);
 
 
 #endif
