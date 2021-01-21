@@ -36,6 +36,7 @@ public:
 };
 
 // Functions to solve the problem, handling exceptions
+double Solve_Newton (double (*fun)(double x), double (*fun_p)(double x), bool acc = false);
 double Solve_Newton (double initial_guess, double (*fun)(double x), double (*fun_p)(double x), bool acc = false);
 double Solve_Newton (int iterations, double epsilon, double initial_guess, double (*fun)(double x),
                      double (*fun_p)(double x), bool acc = false);

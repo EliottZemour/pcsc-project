@@ -17,7 +17,7 @@ protected:
 public:
     // Constructor and destructor
     Newton_System_Solver(int dim, vector (*fun)(vector x), matrix (*inv_jaco)(vector x));
-    Newton_System_Solver(double initial_guess, vector (*fun)(vector x), matrix (*inv_jaco)(vector x));
+    Newton_System_Solver(vector initial_guess, vector (*fun)(vector x), matrix (*inv_jaco)(vector x));
     Newton_System_Solver(int iterations, double epsilon, vector initial_guess, vector (*fun)(vector x),
                   matrix (*inv_jaco)(vector x));
     virtual ~Newton_System_Solver();
@@ -36,8 +36,9 @@ public:
 };
 
 // Functions to solve the problem, handling exceptions
+//vector Solve_System_Newton (int dim, vector (*fun)(vector x), matrix (*inv_jaco)(vector x));
 //vector Solve_System_Newton (vector initial_guess, vector (*fun)(vector x), matrix (*inv_jaco)(vector x));
 //vector Solve_System_Newton (int iterations, double epsilon, vector initial_guess, vector (*fun)(vector x),
-//                     matrix (*inv_jaco)(vector x));
+                            matrix (*inv_jaco)(vector x));
 
 #endif

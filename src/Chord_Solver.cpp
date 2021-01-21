@@ -38,12 +38,13 @@ double Chord_Solver::Solve() const
     double previous = 0.;
     int i = 0;
     next = current - f(current);
+    i += 1;
+
     if(acc)
     {
         double nextnext = next - f(next);
         next = Accelerate(current, next, nextnext);
     }
-    i += 1;
 
     while (true)
     {
@@ -64,23 +65,40 @@ double Chord_Solver::Solve() const
         previous = current;
         current = next;
         double denominator = f(current)-f(previous);
-        if (fabs(denominator) < 1e-15)
-        {
-            std::string error("Division by 0 encountered while updating the approximation of the root, try a new initial guess");
-            throw DivBy0Exception(error);
-        }
+        IsZero(denominator);
         next = current - (current-previous)/denominator*f(current);
+        i += 1;
+
         if(acc)
         {
             denominator = f(next) - f(current);
+            IsZero(denominator);
             double nextnext = next - (next-current)/denominator*f(next);
             next = Accelerate(current, next, nextnext);
         }
-        i += 1;
     }
 
     return current;
 
+}
+
+//################################ External functions #################################
+
+double Solve_Chord (double (*fun)(double x), bool acc)
+{
+    NLE_Solver* solver = new Chord_Solver(fun, acc);
+    double solution = -1;
+
+    try
+    {
+        solution = solver->Solve();
+    }
+    catch (Exception &error)
+    {
+        error.PrintDebug();
+    }
+    delete solver;
+    return solution;
 }
 
 double Solve_Chord (double initial_guess, double (*fun)(double x), bool acc)

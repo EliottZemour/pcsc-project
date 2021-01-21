@@ -1,5 +1,5 @@
 /*
-* Base class for scalar non-linear equations solver
+* Base class for non-linear equations solver using fixed point method
         *
         * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch>
 */
