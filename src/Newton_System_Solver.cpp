@@ -16,7 +16,7 @@ Newton_System_Solver::Newton_System_Solver(int dim, vector (*fun)(vector), matri
     SetInverseJacobian(inv_jaco);
 }
 
-Newton_System_Solver::Newton_System_Solver(double initial_guess, vector (*fun)(vector), matrix (*inv_jaco)(vector))
+Newton_System_Solver::Newton_System_Solver(vector initial_guess, vector (*fun)(vector), matrix (*inv_jaco)(vector))
 : NLS_Solver(initial_guess, fun)
 {
     SetInverseJacobian(inv_jaco);
@@ -44,7 +44,7 @@ vector Newton_System_Solver::Solve() const
         next = current - inv_jacobian(current)*f(current);
         i += 1;
 
-        if (norm(f(next)-f(current))<tolerance)
+        if (norm(next - current)<tolerance)
         {
             std::cout << "Stopped because the solution has converged within the given tolerance" << std::endl;
             break;

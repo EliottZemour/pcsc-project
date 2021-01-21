@@ -66,22 +66,18 @@ double Newton_Solver::Solve() const
     while (true)
     {
         double denominator = f_prime(current);
-
-        if (fabs(denominator) < 1e-15 )
-        {
-            std::string error("Derivative is 0 at the actual approximation of the root, try with a new initial guess");
-            throw DivBy0Exception(error);
-        }
+        IsZero(denominator);
 
         next = current - f(current)/denominator;
+        i += 1;
+
         if(acc)
         {
             double denominator_acc = f_prime(next);
+            IsZero(denominator_acc);
             double nextnext = next - f(next)/denominator;
             next = Accelerate(current, next, nextnext);
         }
-
-        i += 1;
 
         if (fabs(next-current)<tolerance)
         {
@@ -103,7 +99,24 @@ double Newton_Solver::Solve() const
     return current;
 }
 
+//############################## External functions ##################################
 
+double Solve_Newton (double (*fun)(double x), double (*fun_p)(double x), bool acc)
+{
+    NLE_Solver* solver = new Newton_Solver(fun, fun_p, acc);
+    double solution = -1;
+
+    try
+    {
+        solution = solver->Solve();
+    }
+    catch (Exception &error)
+    {
+        error.PrintDebug();
+    }
+    delete solver;
+    return solution;
+}
 
 double Solve_Newton (double initial_guess, double (*fun)(double x), double (*fun_p)(double x), bool acc)
 {

@@ -26,6 +26,7 @@ public:
 };
 
 // Functions to solve the problem, handling exceptions
+double Solve_Chord (double (*fun)(double x), bool acc = false);
 double Solve_Chord (double initial_guess, double (*fun)(double x), bool acc = false);
 double Solve_Chord (int iterations, double epsilon, double initial_guess, double (*fun)(double x), bool acc = false);
 

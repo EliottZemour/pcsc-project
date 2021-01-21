@@ -5,17 +5,19 @@
 */
 
 #include "NLE_Solver.hpp"
+#include "exc/DivBy0Exception.hpp"
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include <cmath>
 
 // Default Constructor
 NLE_Solver::NLE_Solver()
-: Solver(), guess(0.), f(nullptr) {}
+: Solver(), guess(1.), f(nullptr) {}
 
 // Constructor
 NLE_Solver::NLE_Solver(double (*function)(double x))
-: Solver(), guess(0.)
+: Solver(), guess(1.)
 {
     SetFunction(function);
 }
@@ -54,5 +56,16 @@ void NLE_Solver::SetFunction(double (*function)(double))
         std::cout << "Problem : " << problem << std::endl;
         std::cout << "Please re-run providing a correct pointer" << std::endl;
         exit(EXIT_FAILURE);
+    }
+}
+
+//################################### External function #################################
+
+void IsZero (double denominator)
+{
+    if (fabs(denominator) < 1e-15 )
+    {
+        std::string error("Division by 0 encountered while updating the approximation of the root, try a new initial guess");
+        throw DivBy0Exception(error);
     }
 }

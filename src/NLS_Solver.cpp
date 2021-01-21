@@ -85,7 +85,7 @@ NLS_Solver::NLS_Solver(int dim, vector (*function)(vector x))
 NLS_Solver::NLS_Solver(vector initial_guess, vector (*function)(vector x))
 : Solver(), guess(initial_guess)
 {
-    dimension = guess.size();
+    dimension = guess.size();  // The dimension is inferred from the size of the guess
     SetFunction(function);
 }
 
@@ -93,7 +93,7 @@ NLS_Solver::NLS_Solver(vector initial_guess, vector (*function)(vector x))
 NLS_Solver::NLS_Solver(int iterations, double epsilon, vector initial_guess, vector (*function)(vector x))
 : Solver(iterations, epsilon), guess(initial_guess)
 {
-    dimension = guess.size();
+    dimension = guess.size();  // The dimension is inferred from the size of the guess
     SetFunction(function);
 }
 

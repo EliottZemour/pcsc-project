@@ -35,4 +35,7 @@ public:
     virtual double Solve() const = 0;
 };
 
+// Check if a denominator is zero and throw exception if it is the case
+void IsZero (double denominator);
+
 #endif
