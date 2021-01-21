@@ -22,6 +22,9 @@ int main(int argc, char *argv[]) {
     double (*func)(double x) = &function;
     double guess = 10;
 
+    std::cerr << "Test cerr" << std::endl;
+    std::cout << "Test cout" << std::endl;
+
     double res = Solve_Chord(max_iter, tol, guess, func, true);
 
     std::cout.setf(std::ios::scientific);

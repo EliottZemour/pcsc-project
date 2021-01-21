@@ -21,6 +21,6 @@ Exception::Exception(std::string tag_, std::string problem_)
 
 void Exception::PrintDebug () const
 {
-    std::cerr << "** Error (" << tag << ") **" << std::endl;
-    std::cerr << "Problem : " << problem << std::endl << std::endl;
+    std::cout << "** Error (" << tag << ") **" << std::endl;
+    std::cout << "Problem : " << problem << std::endl << std::endl;
 }

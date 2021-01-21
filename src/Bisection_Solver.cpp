@@ -81,14 +81,11 @@ void Bisection_Solver::SetEdges(double LeftEdge, double RightEdge) {
         do
         {
             std::string problem("Bisection edges are invalid: f(LeftEdge) * f(RightEdge) >= 0");
-            std::cerr << problem << "\n";
-            std::cerr.flush();
-            std::cerr << "Please enter other edges\n";
-            std::cerr.flush();
-            std::cout << "Left edge: ";
+            std::cout << "Problem : " << problem << std::endl;
+            std::cout << "Please enter other edges" << std::endl;
+            std::cout << "Left edge: " << std::endl;
             std::cin >> LeftEdge;
-            std::cout << "Right edge: ";
-            std::cout.flush();
+            std::cout << "Right edge: " << std::endl;
             std::cin >> RightEdge;
             f_l = f(LeftEdge);
             f_r = f(RightEdge);

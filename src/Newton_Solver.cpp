@@ -42,9 +42,8 @@ void Newton_Solver::SetDerivative(double (*fun_p)(double))
     if (f_prime == nullptr)
     {
         std::string problem("The pointer on the derivative of the function to solve for is null");
-        std::cerr << "Problem : " << problem << std::endl;
-        std::cerr << "Please re-run providing a correct pointer" << std::endl;
-        std::cerr.flush();
+        std::cout << "Problem : " << problem << std::endl;
+        std::cout << "Please re-run providing a correct pointer" << std::endl;
         exit(EXIT_FAILURE);
     }
 }
@@ -84,7 +83,7 @@ double Newton_Solver::Solve(bool acc) const
         }
         if (i>=max_iter)
         {
-            std::cerr << "Stopped because maximum number of iterations was reached" << std::endl;
+            std::cout << "Stopped because maximum number of iterations was reached" << std::endl;
             std::cout << "The last approximation of the solution is returned" << std::endl;
             break;
         }

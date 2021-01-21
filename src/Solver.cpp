@@ -33,10 +33,8 @@ void Solver::SetMaxIter(int iter)
         int iter_max = 0;
         do
         {
-            std::cerr << "Problem : " << problem << std::endl;
-            std::cerr.flush();
+            std::cout << "Problem : " << problem << std::endl;
             std::cout << "Please enter a valid number of iterations :" << std::endl;
-            std::cout.flush();
             std::cin >> iter_max;
             max_iter = iter_max;
         }
@@ -54,10 +52,8 @@ void Solver::SetTolerance(double epsilon)
         double eps = 0.;
         do
         {
-            std::cerr << "Problem : " << problem << std::endl;
-            std::cerr.flush();
+            std::cout << "Problem : " << problem << std::endl;
             std::cout << "Please enter a valid tolerance :" << std::endl;
-            std::cout.flush();
             std::cin >> eps;
             tolerance = eps;
         }
@@ -65,8 +61,7 @@ void Solver::SetTolerance(double epsilon)
     }
     if (tolerance > 1)
     {
-        std::cerr << "The tolerance is really high (bigger than 1)" << std::endl;
-        std::cerr << "Continuing anyway..." << std::endl;
-        std::cerr.flush();
+        std::cout << "The tolerance is really high (bigger than 1)" << std::endl;
+        std::cout << "Continuing anyway..." << std::endl;
     }
 }
