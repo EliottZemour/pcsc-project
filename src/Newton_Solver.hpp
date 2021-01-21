@@ -8,6 +8,7 @@
 #define NEWTON_SOLVER_H
 
 #include "NLE_Solver.hpp"
+#include "Aitken_Accelerator.hpp"
 
 class Newton_Solver : public NLE_Solver
 {
@@ -29,12 +30,12 @@ public:
     double EvaluateDerivative (double x) const {return f_prime(x);}
 
     // Override of the solve function
-    double Solve() const override;
+    double Solve(bool acc) const override;
 };
 
 // Functions to solve the problem, handling exceptions
-double Solve_Newton (double initial_guess, double (*fun)(double x), double (*fun_p)(double x));
+double Solve_Newton (double initial_guess, double (*fun)(double x), double (*fun_p)(double x), bool acc);
 double Solve_Newton (int iterations, double epsilon, double initial_guess, double (*fun)(double x),
-                     double (*fun_p)(double x));
+                     double (*fun_p)(double x), bool acc);
 
 #endif

@@ -50,7 +50,7 @@ void Newton_Solver::SetDerivative(double (*fun_p)(double))
 }
 
 // Override of the solve function
-double Newton_Solver::Solve() const
+double Newton_Solver::Solve(bool acc) const
 {
     double current = guess;
     double next = 0.;
@@ -67,11 +67,19 @@ double Newton_Solver::Solve() const
         }
 
         next = current - f(current)/denominator;
+        if(acc)
+        {
+            double denominator_acc = f_prime(next);
+            double nextnext = next - f(next)/denominator;
+            next = Accelerate(current, next, nextnext);
+        }
+
         i += 1;
 
         if (fabs(next-current)<tolerance)
         {
             std::cout << "Stopped because the solution has converged within the given tolerance" << std::endl;
+            std::cout << "iteration #" << i << std::endl;
             break;
         }
         if (i>=max_iter)
@@ -90,14 +98,14 @@ double Newton_Solver::Solve() const
 
 
 
-double Solve_Newton (double initial_guess, double (*fun)(double x), double (*fun_p)(double x))
+double Solve_Newton (double initial_guess, double (*fun)(double x), double (*fun_p)(double x), bool acc)
 {
     NLE_Solver* solver = new Newton_Solver(initial_guess, fun, fun_p);
     double solution = -1;
 
     try
     {
-        solution = solver->Solve();
+        solution = solver->Solve(acc);
     }
     catch (Exception &error)
     {
@@ -108,14 +116,14 @@ double Solve_Newton (double initial_guess, double (*fun)(double x), double (*fun
 }
 
 double Solve_Newton (int iterations, double epsilon, double initial_guess, double (*fun)(double x),
-                     double (*fun_p)(double x))
+                     double (*fun_p)(double x), bool acc)
 {
     NLE_Solver* solver = new Newton_Solver(iterations, epsilon, initial_guess, fun, fun_p);
     double solution = -1;
 
     try
     {
-        solution = solver->Solve();
+        solution = solver->Solve(acc);
     }
     catch (Exception &error)
     {

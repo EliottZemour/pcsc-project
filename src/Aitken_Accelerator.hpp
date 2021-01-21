@@ -10,14 +10,9 @@
  * Useful for accelerating the convergence of a sequence that is converging linearly
  */
 
-class Aitken_Accelerator {
+// Acceleration method
+double Accelerate(double current, double next, double nextnext);
 
-public:
-    // Acceleration method
-    double Accelerate(double current, double next, double nextnext) const;
-
-
-};
 
 
 #endif //AITKEN_ACCELERATOR_H
