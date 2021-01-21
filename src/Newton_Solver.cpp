@@ -13,19 +13,27 @@
 
 // Default Constructor
 Newton_Solver::Newton_Solver()
-: NLE_Solver(), f_prime(nullptr) {}
+: Fixed_Point_Solver(), f_prime(nullptr) {}
 
 // Constructor
-Newton_Solver::Newton_Solver(double initial_guess, double (*fun)(double x), double (*fun_p)(double x))
-: NLE_Solver(initial_guess, fun)
+Newton_Solver::Newton_Solver(double (*fun)(double), double (*fun_p)(double), bool acceleration)
+: Fixed_Point_Solver(fun, acceleration)
+{
+    SetDerivative(fun_p);
+}
+
+// Constructor
+Newton_Solver::Newton_Solver(double initial_guess, double (*fun)(double x), double (*fun_p)(double x),
+                             bool acceleration)
+: Fixed_Point_Solver(initial_guess, fun, acceleration)
 {
     SetDerivative(fun_p);
 }
 
 // Constructor
 Newton_Solver::Newton_Solver(int iterations, double epsilon, double initial_guess, double (*fun)(double x),
-                             double (*fun_p)(double x))
-: NLE_Solver(iterations, epsilon, initial_guess, fun)
+                             double (*fun_p)(double x), bool acceleration)
+: Fixed_Point_Solver(iterations, epsilon, initial_guess, fun, acceleration)
 {
     SetDerivative(fun_p);
 }
@@ -49,7 +57,7 @@ void Newton_Solver::SetDerivative(double (*fun_p)(double))
 }
 
 // Override of the solve function
-double Newton_Solver::Solve(bool acc) const
+double Newton_Solver::Solve() const
 {
     double current = guess;
     double next = 0.;
@@ -99,12 +107,12 @@ double Newton_Solver::Solve(bool acc) const
 
 double Solve_Newton (double initial_guess, double (*fun)(double x), double (*fun_p)(double x), bool acc)
 {
-    NLE_Solver* solver = new Newton_Solver(initial_guess, fun, fun_p);
+    NLE_Solver* solver = new Newton_Solver(initial_guess, fun, fun_p, acc);
     double solution = -1;
 
     try
     {
-        solution = solver->Solve(acc);
+        solution = solver->Solve();
     }
     catch (Exception &error)
     {
@@ -117,12 +125,12 @@ double Solve_Newton (double initial_guess, double (*fun)(double x), double (*fun
 double Solve_Newton (int iterations, double epsilon, double initial_guess, double (*fun)(double x),
                      double (*fun_p)(double x), bool acc)
 {
-    NLE_Solver* solver = new Newton_Solver(iterations, epsilon, initial_guess, fun, fun_p);
+    NLE_Solver* solver = new Newton_Solver(iterations, epsilon, initial_guess, fun, fun_p, acc);
     double solution = -1;
 
     try
     {
-        solution = solver->Solve(acc);
+        solution = solver->Solve();
     }
     catch (Exception &error)
     {

@@ -12,21 +12,26 @@
 
 // Default Constructor
 Chord_Solver::Chord_Solver()
-: NLE_Solver() {}
+: Fixed_Point_Solver() {}
 
 // Constructor
-Chord_Solver::Chord_Solver(double initial_guess, double (*function)(double))
-: NLE_Solver(initial_guess, function) {}
+Chord_Solver::Chord_Solver(double (*function)(double), bool acceleration)
+: Fixed_Point_Solver(function, acceleration) {}
 
 // Constructor
-Chord_Solver::Chord_Solver(int iterations, double epsilon, double initial_guess, double (*function)(double x))
-: NLE_Solver(iterations, epsilon, initial_guess, function) {}
+Chord_Solver::Chord_Solver(double initial_guess, double (*function)(double), bool acceleration)
+: Fixed_Point_Solver(initial_guess, function, acceleration) {}
+
+// Constructor
+Chord_Solver::Chord_Solver(int iterations, double epsilon, double initial_guess, double (*function)(double x),
+                           bool acceleration)
+: Fixed_Point_Solver(iterations, epsilon, initial_guess, function, acceleration) {}
 
 // Destructor
 Chord_Solver::~Chord_Solver() {}
 
 // Override of the solve function
-double Chord_Solver::Solve(bool acc) const
+double Chord_Solver::Solve() const
 {
     double current = guess;
     double next = 0.;
@@ -80,12 +85,12 @@ double Chord_Solver::Solve(bool acc) const
 
 double Solve_Chord (double initial_guess, double (*fun)(double x), bool acc)
 {
-    NLE_Solver* solver = new Chord_Solver(initial_guess, fun);
+    NLE_Solver* solver = new Chord_Solver(initial_guess, fun, acc);
     double solution = -1;
 
     try
     {
-        solution = solver->Solve(acc);
+        solution = solver->Solve();
     }
     catch (Exception &error)
     {
@@ -97,12 +102,12 @@ double Solve_Chord (double initial_guess, double (*fun)(double x), bool acc)
 
 double Solve_Chord (int iterations, double epsilon, double initial_guess, double (*fun)(double x), bool acc)
 {
-    NLE_Solver* solver = new Chord_Solver(iterations, epsilon, initial_guess, fun);
+    NLE_Solver* solver = new Chord_Solver(iterations, epsilon, initial_guess, fun, acc);
     double solution = -1;
 
     try
     {
-        solution = solver->Solve(acc);
+        solution = solver->Solve();
     }
     catch (Exception &error)
     {

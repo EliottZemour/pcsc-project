@@ -32,7 +32,7 @@ public:
     double EvaluateFunction (double x) const {return f(x);}
 
     // Virtual function to solve the NLE
-    virtual double Solve(bool acc = false) const = 0;
+    virtual double Solve() const = 0;
 };
 
 #endif
