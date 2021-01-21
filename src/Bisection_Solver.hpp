@@ -17,7 +17,7 @@ public:
     virtual ~Bisection_Solver();
 
     // Solve method
-    double Solve(bool acc = false) const override;
+    double Solve() const override;
 
     // Setters
     void SetEdges(double LeftEdge, double RightEdge);

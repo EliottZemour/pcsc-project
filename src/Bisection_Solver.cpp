@@ -24,17 +24,13 @@ Bisection_Solver::Bisection_Solver(double (*function)(double), double LeftEdge, 
 Bisection_Solver::~Bisection_Solver() {}
 
 // Override of the solve function
-double Bisection_Solver::Solve(bool acc) const
+double Bisection_Solver::Solve() const
 {
     double mid = (left + right)/2.;
     double _left = left;
     double _right = right;
     double iter_count = 0;
 
-    if (acc)
-    {
-        std::cout << "Aitken acceleration is not available for Bisection Solver, NLE solved as usual" << std::endl;
-    }
 
     if (fabs(f(mid)) < tolerance) // mettre "< tolerance" à l'avenir (quand on change sa sigification)
     {
