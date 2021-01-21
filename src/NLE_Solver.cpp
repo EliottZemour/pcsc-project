@@ -51,9 +51,8 @@ void NLE_Solver::SetFunction(double (*function)(double))
     if (f == nullptr)
     {
         std::string problem("The pointer on the function to solve for is null");
-        std::cerr << "Problem : " << problem << std::endl;
-        std::cerr << "Please re-run providing a correct pointer" << std::endl;
-        std::cerr.flush();
+        std::cout << "Problem : " << problem << std::endl;
+        std::cout << "Please re-run providing a correct pointer" << std::endl;
         exit(EXIT_FAILURE);
     }
 }

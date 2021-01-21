@@ -51,7 +51,7 @@ vector Newton_System_Solver::Solve() const
         }
         if (i>=max_iter)
         {
-            std::cerr << "Stopped because maximum number of iterations was reached" << std::endl;
+            std::cout << "Stopped because maximum number of iterations was reached" << std::endl;
             std::cout << "The last approximation of the solution is returned" << std::endl;
             break;
         }
@@ -71,9 +71,8 @@ void Newton_System_Solver::SetInverseJacobian(matrix (*inv_jaco)(vector))
     if (inv_jacobian == nullptr)
     {
         std::string problem("The pointer on the inverse jacobian is null");
-        std::cerr << "Problem : " << problem << std::endl;
-        std::cerr << "Please re-run providing a correct pointer" << std::endl;
-        std::cerr.flush();
+        std::cout << "Problem : " << problem << std::endl;
+        std::cout << "Please re-run providing a correct pointer" << std::endl;
         exit(EXIT_FAILURE);
     }
 
@@ -88,9 +87,8 @@ void Newton_System_Solver::TestDimensionInvJacobian() const
     if (dimension != foo.size())
     {
         std::string problem("The inverse jacobian does not match the dimension of the system !");
-        std::cerr << "Problem : " << problem << std::endl;
-        std::cerr << "Please re-run providing correct dimensions" << std::endl;
-        std::cerr.flush();
+        std::cout << "Problem : " << problem << std::endl;
+        std::cout << "Please re-run providing correct dimensions" << std::endl;
         exit(EXIT_FAILURE);
     }
 
@@ -99,9 +97,8 @@ void Newton_System_Solver::TestDimensionInvJacobian() const
         if (dimension != foo[i].size())
         {
             std::string problem("The inverse jacobian is not a squared matrix !");
-            std::cerr << "Problem : " << problem << std::endl;
-            std::cerr << "Please re-run providing correct dimensions" << std::endl;
-            std::cerr.flush();
+            std::cout << "Problem : " << problem << std::endl;
+            std::cout << "Please re-run providing correct dimensions" << std::endl;
             exit(EXIT_FAILURE);
         }
     }

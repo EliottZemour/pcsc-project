@@ -106,9 +106,8 @@ void NLS_Solver::SetGuess(vector initial_guess)
     if (initial_guess.size() != dimension)
     {
         std::string problem("The guess does not have the right dimension");
-        std::cerr << "Problem : " << problem << std::endl;
-        std::cerr << "Please re-run providing a correct guess" << std::endl;
-        std::cerr.flush();
+        std::cout << "Problem : " << problem << std::endl;
+        std::cout << "Please re-run providing a correct guess" << std::endl;
         exit(EXIT_FAILURE);
     }
 
@@ -122,9 +121,8 @@ void NLS_Solver::SetFunction(vector (*function)(vector))
     if (f == nullptr)
     {
         std::string problem("The pointer on the function to solve for is null");
-        std::cerr << "Problem : " << problem << std::endl;
-        std::cerr << "Please re-run providing a correct pointer" << std::endl;
-        std::cerr.flush();
+        std::cout << "Problem : " << problem << std::endl;
+        std::cout << "Please re-run providing a correct pointer" << std::endl;
         exit(EXIT_FAILURE);
     }
 
@@ -141,10 +139,8 @@ void NLS_Solver::SetDimension(int dim)
         int dim = 0;
         do
         {
-            std::cerr << "Problem : " << problem << std::endl;
-            std::cerr.flush();
+            std::cout << "Problem : " << problem << std::endl;
             std::cout << "Please enter a valid dimension for your system :" << std::endl;
-            std::cout.flush();
             std::cin >> dim;
             dimension = dim;
         }
@@ -161,9 +157,8 @@ void NLS_Solver::TestDimensionFunction() const
     if (dimension != dim)
     {
         std::string problem("The function does not match the dimension of the system !");
-        std::cerr << "Problem : " << problem << std::endl;
-        std::cerr << "Please re-run providing correct dimensions" << std::endl;
-        std::cerr.flush();
+        std::cout << "Problem : " << problem << std::endl;
+        std::cout << "Please re-run providing correct dimensions" << std::endl;
         exit(EXIT_FAILURE);
     }
 }
