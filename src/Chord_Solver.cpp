@@ -5,7 +5,6 @@
 */
 
 #include "Chord_Solver.hpp"
-#include "exc/DivBy0Exception.hpp"
 #include <cmath>
 #include <iostream>
 #include "Aitken_Accelerator.hpp"
@@ -87,51 +86,18 @@ double Chord_Solver::Solve() const
 double Solve_Chord (double (*fun)(double x), bool acc)
 {
     NLE_Solver* solver = new Chord_Solver(fun, acc);
-    double solution = -1;
-
-    try
-    {
-        solution = solver->Solve();
-    }
-    catch (Exception &error)
-    {
-        error.PrintDebug();
-    }
-    delete solver;
-    return solution;
+    return TrySolve(solver);
 }
 
 double Solve_Chord (double initial_guess, double (*fun)(double x), bool acc)
 {
     NLE_Solver* solver = new Chord_Solver(initial_guess, fun, acc);
-    double solution = -1;
-
-    try
-    {
-        solution = solver->Solve();
-    }
-    catch (Exception &error)
-    {
-        error.PrintDebug();
-    }
-    delete solver;
-    return solution;
+    return TrySolve(solver);
 }
 
 double Solve_Chord (int iterations, double epsilon, double initial_guess, double (*fun)(double x), bool acc)
 {
     NLE_Solver* solver = new Chord_Solver(iterations, epsilon, initial_guess, fun, acc);
-    double solution = -1;
-
-    try
-    {
-        solution = solver->Solve();
-    }
-    catch (Exception &error)
-    {
-        error.PrintDebug();
-    }
-    delete solver;
-    return solution;
+    return TrySolve(solver);
 }
 

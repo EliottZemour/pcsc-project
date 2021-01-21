@@ -5,7 +5,6 @@
 */
 
 #include "Newton_Solver.hpp"
-#include "exc/DivBy0Exception.hpp"
 #include <string>
 #include <cmath>
 #include <iostream>
@@ -104,51 +103,18 @@ double Newton_Solver::Solve() const
 double Solve_Newton (double (*fun)(double x), double (*fun_p)(double x), bool acc)
 {
     NLE_Solver* solver = new Newton_Solver(fun, fun_p, acc);
-    double solution = -1;
-
-    try
-    {
-        solution = solver->Solve();
-    }
-    catch (Exception &error)
-    {
-        error.PrintDebug();
-    }
-    delete solver;
-    return solution;
+    return TrySolve(solver);
 }
 
 double Solve_Newton (double initial_guess, double (*fun)(double x), double (*fun_p)(double x), bool acc)
 {
     NLE_Solver* solver = new Newton_Solver(initial_guess, fun, fun_p, acc);
-    double solution = -1;
-
-    try
-    {
-        solution = solver->Solve();
-    }
-    catch (Exception &error)
-    {
-        error.PrintDebug();
-    }
-    delete solver;
-    return solution;
+    return TrySolve(solver);
 }
 
 double Solve_Newton (int iterations, double epsilon, double initial_guess, double (*fun)(double x),
                      double (*fun_p)(double x), bool acc)
 {
     NLE_Solver* solver = new Newton_Solver(iterations, epsilon, initial_guess, fun, fun_p, acc);
-    double solution = -1;
-
-    try
-    {
-        solution = solver->Solve();
-    }
-    catch (Exception &error)
-    {
-        error.PrintDebug();
-    }
-    delete solver;
-    return solution;
+    return TrySolve(solver);
 }

@@ -65,7 +65,7 @@ void IsZero (double denominator)
 {
     if (fabs(denominator) < 1e-15 )
     {
-        std::string error("Division by 0 encountered while updating the approximation of the root, try a new initial guess");
+        std::string error("Division by 0 encountered while updating the approximation of the root");
         throw DivBy0Exception(error);
     }
 }
