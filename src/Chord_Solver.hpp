@@ -7,20 +7,22 @@
 #ifndef CHORD_SOLVER_H
 #define CHORD_SOLVER_H
 
-#include "NLE_Solver.hpp"
+#include "Fixed_Point_Solver.hpp"
 #include "Aitken_Accelerator.hpp"
 
-class Chord_Solver : public NLE_Solver
+class Chord_Solver : public Fixed_Point_Solver
 {
 public:
     // Constructor and destructor
     Chord_Solver();
-    Chord_Solver(double initial_guess, double (*function)(double x));
-    Chord_Solver(int iterations, double epsilon, double initial_guess, double (*function)(double x));
+    Chord_Solver(double (*function)(double x), bool acceleration = false);
+    Chord_Solver(double initial_guess, double (*function)(double x), bool acceleration = false);
+    Chord_Solver(int iterations, double epsilon, double initial_guess, double (*function)(double x),
+                 bool acceleration = false);
     virtual ~Chord_Solver();
 
     // Override of the solve function
-    double Solve(bool acc = false) const override;
+    double Solve() const override;
 };
 
 // Functions to solve the problem, handling exceptions
