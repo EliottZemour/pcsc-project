@@ -31,4 +31,11 @@ public:
 
 };
 
+// Function handling the exceptions that will occur in the override of the Solve function.
+// It will try solving a second time changing the initial guess. This is particularly useful when using
+// Newton's method, since the user may set the initial guess on a zero of the derivative. For example,
+// if the derivative is 3x^2, the user may be tempted of setting the initial guess to 0, which will create a
+// division by 0
+double TrySolve (NLE_Solver *solver)
+
 #endif
