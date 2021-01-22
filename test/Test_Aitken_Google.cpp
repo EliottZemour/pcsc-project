@@ -1,6 +1,9 @@
-//
-// Created by Eliott on 21/01/2021.
-//
+/*
+ * Aitken accelerator testing file
+ * In order to reproduce the results mentioned in the report,
+ * comment the output lines in the Solve methods for Chord and Newton solver
+ * Finally, uncomment the google tests from line
+*/
 
 #include "../src/Aitken_Accelerator.hpp"
 #include "../src/Chord_Solver.hpp"
@@ -22,6 +25,32 @@ double function_sinus_prime (double x)
     return cos(x);
 }
 
+TEST(TestAitken, chord_acc)
+{
+    double (*func)(double x) = &function_sinus;
+    double tol = 1e-3;
+    int max_iter = 100;
+    double guess = 10;
+    double res_acc = Solve_Chord(max_iter, tol, guess, func, true);
+    double f_root_acc = std::fabs(func(res_acc));
+
+    EXPECT_LE(f_root_acc, 1e-3);
+}
+
+TEST(TestAitken, newton_acc)
+{
+    double (*func)(double x) = &function_sinus;
+    double (*func_p)(double x) = &function_sinus_prime;
+    double tol = 1e-3;
+    int max_iter = 100;
+    double guess = 10;
+    double res_acc = Solve_Newton(max_iter, tol, guess, func, func_p, true);
+    double f_root_acc = std::fabs(func(res_acc));
+
+    EXPECT_LE(f_root_acc, 1e-3);
+}
+
+ /*
 TEST(TestAitken, acc_chord)
 {
     double (*func)(double x) = &function_sinus;
@@ -51,7 +80,10 @@ TEST(TestAitken, acc_chord)
     EXPECT_LE(duration_acc.count(), duration.count());
 
 }
+  */
 
+
+/*
 TEST(TestAitken, acc_newton)
 {
     double (*func)(double x) = &function_sinus;
@@ -81,6 +113,7 @@ TEST(TestAitken, acc_newton)
 
     EXPECT_LE(duration_acc.count(), duration.count());
 }
+ */
 
 
 int main(int argc, char *argv[]) {

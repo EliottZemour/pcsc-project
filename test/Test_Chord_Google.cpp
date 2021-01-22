@@ -33,7 +33,7 @@ TEST(TestChord, xcube)
     double tol = 1e-3;
     int max_iter = 100;
     double guess = 10;
-    double res = Solve_Chord(max_iter, tol, guess, func, true);
+    double res = Solve_Chord(max_iter, tol, guess, func, false);
     double diff = std::fabs(res - pow(2., 1./3.));
 
     EXPECT_LE(diff, 1e-3);
@@ -45,7 +45,7 @@ TEST(TestChord, sinus)
     double tol = 1e-3;
     int max_iter = 100;
     double guess = 10;
-    double res = Solve_Chord(max_iter, tol, guess, func, true);
+    double res = Solve_Chord(max_iter, tol, guess, func, false);
     double f_root = std::fabs(func(res));
 
     EXPECT_LE(f_root, 1e-3);
