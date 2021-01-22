@@ -17,7 +17,7 @@ Finally, this project includes an extension to systems of nonlinear equations (N
 
 ## Architecture of the project
 
-![Imgur](https://i.imgur.com/Nwz1Yk9.png)
+![Imgur](https://i.imgur.com/Oi06fhP.png)
 
 ## How to use
 There are several ways to use the numerical methods implemented:
