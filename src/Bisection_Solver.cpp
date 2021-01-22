@@ -123,3 +123,12 @@ double Solve_Bisection(double (*function)(double), double LeftEdge, double Right
     delete solver;
     return solution;
 }
+
+double Solve_Bisection(int maxiter, double epsilon, double (*function)(double), double LeftEdge, double RightEdge) {
+    NLE_Solver* solver = new Bisection_Solver(maxiter, epsilon, function, LeftEdge, RightEdge);
+    double solution = -1;
+    solution = solver->Solve();
+
+    delete solver;
+    return solution;
+}

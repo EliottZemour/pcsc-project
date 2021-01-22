@@ -33,6 +33,6 @@ private:
 
 /// Functions to solve the problem, handling exceptions
 double Solve_Bisection(double (*function)(double x), double LeftEdge, double RightEdge);
-
+double Solve_Bisection(int maxiter, double epsilon, double (*function)(double), double LeftEdge, double RightEdge);
 
 #endif //BISECTION_H
