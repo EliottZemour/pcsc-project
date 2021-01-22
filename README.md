@@ -19,5 +19,7 @@ Finally, this project includes an extension to systems of nonlinear equations (N
 
 ![Imgur](https://i.imgur.com/Nwz1Yk9.png)
 
+## How to use
 
+Out of class methods Solve_Newton, Solve_Chord, Solve_Bisection are designed to instantiate the NLE Solver objects, call their own solve function to obtain the solution and then delete them.
 
