@@ -19,6 +19,8 @@ Finally, this project includes an extension to systems of nonlinear equations (N
 
 ![Imgur](https://i.imgur.com/Oi06fhP.png)
 
+A Doxygen generated documentation is also available within the repository.
+
 ## How to use
 There are several ways to use the numerical methods implemented:
 * Either though out of class methods Solve_Newton, Solve_Chord, Solve_Bisection are designed to instantiate the NLE Solver objects, call their own solve function to obtain the solution and then delete them.
