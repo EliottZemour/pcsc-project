@@ -20,6 +20,12 @@ Bisection_Solver::Bisection_Solver(double (*function)(double), double LeftEdge, 
             SetEdges(LeftEdge, RightEdge);
         }
 
+Bisection_Solver::Bisection_Solver(int maxiter, double epsilon, double (*function)(double), double LeftEdge, double RightEdge)
+        :NLE_Solver(maxiter, epsilon, 0., function)
+        {
+            SetEdges(LeftEdge, RightEdge);
+        }
+
 /// Destructor
 Bisection_Solver::~Bisection_Solver() {}
 
@@ -42,6 +48,8 @@ double Bisection_Solver::Solve() const
         mid = (_left + _right)/2.;
         if (fabs(f(mid)) < tolerance)
         {
+            std::cout << "Stopped because the solution has converged within the given tolerance" << std::endl;
+            std::cout << "iteration #" << iter_count << std::endl;
             break;
         }
         if (f(mid) < 0)
@@ -51,6 +59,12 @@ double Bisection_Solver::Solve() const
         else if (f(mid) > 0)
         {
             _right = mid;
+        }
+        if (iter_count>=max_iter)
+        {
+            std::cout << "Stopped because maximum number of iterations was reached" << std::endl;
+            std::cout << "The last approximation of the solution is returned" << std::endl;
+            break;
         }
     }
     return mid;
@@ -96,6 +110,8 @@ void Bisection_Solver::SetEdges(double LeftEdge, double RightEdge) {
         }
     }
 }
+
+
 
 ///################################ External function #################################
 

@@ -18,6 +18,7 @@ public:
     /// Constructor and destructor
     Bisection_Solver();
     Bisection_Solver(double (*function)(double x), double LeftEdge, double RightEdge);
+    Bisection_Solver(int maxiter, double epsilon, double (*function)(double), double LeftEdge, double RightEdge);
     virtual ~Bisection_Solver();
 
     /// Solve method
