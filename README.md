@@ -20,6 +20,7 @@ Finally, this project includes an extension to systems of nonlinear equations (N
 ![Imgur](https://i.imgur.com/Nwz1Yk9.png)
 
 ## How to use
-
-Out of class methods Solve_Newton, Solve_Chord, Solve_Bisection are designed to instantiate the NLE Solver objects, call their own solve function to obtain the solution and then delete them.
+There are several ways to use the numerical methods implemented:
+* Either though out of class methods Solve_Newton, Solve_Chord, Solve_Bisection are designed to instantiate the NLE Solver objects, call their own solve function to obtain the solution and then delete them.
+* Either by dynamically allocating memory for a NLE Solver object and directly calling its solve function. In this case the user is responsible of deleting the object.
 
