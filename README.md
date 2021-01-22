@@ -17,6 +17,7 @@ Finally, this project includes an extension to systems of nonlinear equations (N
 
 ## Architecture of the project
 
-![Imgur](https://imgur.com/mxVln6Y)
+![Imgur](https://i.imgur.com/mxVln6Y.png)
+
 
 
