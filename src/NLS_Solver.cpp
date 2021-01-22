@@ -72,7 +72,7 @@ double norm (vector a, int p)
 
 // ######################## Class methods ##############################
 
-// Constructor
+/// Constructor
 NLS_Solver::NLS_Solver(int dim, vector (*function)(vector x))
 : Solver()
 {
@@ -81,7 +81,7 @@ NLS_Solver::NLS_Solver(int dim, vector (*function)(vector x))
     SetFunction(function);
 }
 
-// Constructor
+/// Constructor
 NLS_Solver::NLS_Solver(vector initial_guess, vector (*function)(vector x))
 : Solver(), guess(initial_guess)
 {
@@ -89,7 +89,7 @@ NLS_Solver::NLS_Solver(vector initial_guess, vector (*function)(vector x))
     SetFunction(function);
 }
 
-// Constructor
+/// Constructor
 NLS_Solver::NLS_Solver(int iterations, double epsilon, vector initial_guess, vector (*function)(vector x))
 : Solver(iterations, epsilon), guess(initial_guess)
 {
@@ -97,10 +97,10 @@ NLS_Solver::NLS_Solver(int iterations, double epsilon, vector initial_guess, vec
     SetFunction(function);
 }
 
-// Destructor
+/// Destructor
 NLS_Solver::~NLS_Solver() {}
 
-// Setter
+/// Setter
 void NLS_Solver::SetGuess(vector initial_guess)
 {
     if (initial_guess.size() != dimension)
@@ -148,7 +148,7 @@ void NLS_Solver::SetDimension(int dim)
     }
 }
 
-// Test dimension
+/// Test dimension
 void NLS_Solver::TestDimensionFunction() const
 {
     vector foo = f(guess);

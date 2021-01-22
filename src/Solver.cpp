@@ -1,28 +1,27 @@
-/*
-* Base class for all solvers
-        *
-        * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch>
-*/
+
 
 #include "Solver.hpp"
 #include <string>
 #include <iostream>
+/**
+* Base class for all solvers
+*/
 
-// Default Constructor
+/// Default Constructor
 Solver::Solver()
 : max_iter(100), tolerance(1e-3) {}
 
-// Constructor
+/// Constructor
 Solver::Solver(int iterations, double epsilon)
 {
     SetMaxIter(iterations);
     SetTolerance(epsilon);
 }
 
-// Destructor
+/// Destructor
 Solver::~Solver() {}
 
-// Setters
+/// Setters
 void Solver::SetMaxIter(int iter)
 {
     max_iter = iter;

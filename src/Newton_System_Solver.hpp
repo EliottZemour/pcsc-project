@@ -1,4 +1,4 @@
-/*
+/**
 * Class for solving NLS using Newton method
         *
         * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch>
@@ -15,23 +15,23 @@ protected:
     matrix (*inv_jacobian)(vector x);
 
 public:
-    // Constructor and destructor
+    /// Constructor and destructor
     Newton_System_Solver(int dim, vector (*fun)(vector x), matrix (*inv_jaco)(vector x));
     Newton_System_Solver(vector initial_guess, vector (*fun)(vector x), matrix (*inv_jaco)(vector x));
     Newton_System_Solver(int iterations, double epsilon, vector initial_guess, vector (*fun)(vector x),
                   matrix (*inv_jaco)(vector x));
     virtual ~Newton_System_Solver();
 
-    // Setter
+    /// Setter
     void SetInverseJacobian(matrix (*inv_jaco)(vector x));
 
-    // Getter
+    /// Getter
     matrix EvaluateInverseJacobian (vector x) const {return inv_jacobian(x);}
 
-    // To test whether the dimension of the inverse jacobian is correct
+    /// To test whether the dimension of the inverse jacobian is correct
     void TestDimensionInvJacobian () const;
 
-    // Override of the solve function
+    /// Override of the solve function
     vector Solve() const override;
 };
 
@@ -39,6 +39,6 @@ public:
 //vector Solve_System_Newton (int dim, vector (*fun)(vector x), matrix (*inv_jaco)(vector x));
 //vector Solve_System_Newton (vector initial_guess, vector (*fun)(vector x), matrix (*inv_jaco)(vector x));
 //vector Solve_System_Newton (int iterations, double epsilon, vector initial_guess, vector (*fun)(vector x),
-                            matrix (*inv_jaco)(vector x));
+//                            matrix (*inv_jaco)(vector x));
 
 #endif

@@ -1,35 +1,34 @@
-/*
-* Base class for non-linear equations solver using fixed point method
-        *
-        * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch>
-*/
 
 #include "Fixed_Point_Solver.hpp"
 #include "exc/Exception.hpp"
+/**
+* Base class for non-linear equations solver using fixed point method
+*/
 
-// Default Constructor
+
+/// Default Constructor
 Fixed_Point_Solver::Fixed_Point_Solver()
 : NLE_Solver(), acc(false) {}
 
-// Constructor
+/// Constructor
 Fixed_Point_Solver::Fixed_Point_Solver(double (*function)(double), bool acceleration)
 : NLE_Solver(function), acc(acceleration) {}
 
-// Constructor
+/// Constructor
 Fixed_Point_Solver::Fixed_Point_Solver(double initial_guess, double (*function)(double), bool acceleration)
 : NLE_Solver(initial_guess, function), acc(acceleration) {}
 
-// Constructor
+/// Constructor
 Fixed_Point_Solver::Fixed_Point_Solver(int iterations, double epsilon, double initial_guess,
                                        double (*function)(double), bool acceleration)
 : NLE_Solver(iterations, epsilon, initial_guess, function), acc(acceleration) {}
 
 
-// Destructor
+/// Destructor
 Fixed_Point_Solver::~Fixed_Point_Solver() {}
 
 
-//########################################## External function ##############################################
+///########################################## External function ##############################################
 
 double TrySolve (NLE_Solver *solver)
 {

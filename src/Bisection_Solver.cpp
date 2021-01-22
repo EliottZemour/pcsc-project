@@ -7,23 +7,23 @@
 #include <iostream>
 #include "exc/DivBy0Exception.hpp"
 
-// Default Constructor
+/// Default Constructor
 Bisection_Solver::Bisection_Solver()
         : NLE_Solver() {}
 
-// Constructor
-// Need to assert that f(left) * f(right) < 0 in the constructor
-// and swap (or not) left & right such that f(left) < 0 and f(right) > 0
+/// Constructor
+/// Need to assert that f(left) * f(right) < 0 in the constructor
+/// and swap (or not) left & right such that f(left) < 0 and f(right) > 0
 Bisection_Solver::Bisection_Solver(double (*function)(double), double LeftEdge, double RightEdge)
         : NLE_Solver(function)
         {
             SetEdges(LeftEdge, RightEdge);
         }
 
-// Destructor
+/// Destructor
 Bisection_Solver::~Bisection_Solver() {}
 
-// Override of the solve function
+/// Override of the solve function
 double Bisection_Solver::Solve() const
 {
     double mid = (left + right)/2.;
@@ -56,7 +56,7 @@ double Bisection_Solver::Solve() const
     return mid;
 }
 
-// Setters
+/// Setters
 void Bisection_Solver::SetEdges(double LeftEdge, double RightEdge) {
     double f_l = f(LeftEdge);
     double f_r = f(RightEdge);
@@ -96,6 +96,8 @@ void Bisection_Solver::SetEdges(double LeftEdge, double RightEdge) {
         }
     }
 }
+
+///################################ External function #################################
 
 double Solve_Bisection(double (*function)(double), double LeftEdge, double RightEdge) {
     NLE_Solver* solver = new Bisection_Solver(function, LeftEdge, RightEdge);

@@ -1,4 +1,4 @@
-/*
+/**
 * Class for solving NLE using Newton method
         *
         * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch>
@@ -9,7 +9,7 @@
 #include <iostream>
 #include <cstdlib>
 
-// Constructor
+/// Constructor
 Newton_System_Solver::Newton_System_Solver(int dim, vector (*fun)(vector), matrix (*inv_jaco)(vector))
 : NLS_Solver(dim, fun)
 {
@@ -29,10 +29,10 @@ Newton_System_Solver::Newton_System_Solver(int iterations, double epsilon, vecto
     SetInverseJacobian(inv_jaco);
 }
 
-// Destructor
+/// Destructor
 Newton_System_Solver::~Newton_System_Solver() {}
 
-// Override of the solve function
+/// Override of the solve function
 vector Newton_System_Solver::Solve() const
 {
     vector current = guess;
@@ -63,7 +63,7 @@ vector Newton_System_Solver::Solve() const
     return current;
 }
 
-// Setter
+/// Setter
 void Newton_System_Solver::SetInverseJacobian(matrix (*inv_jaco)(vector))
 {
     inv_jacobian = inv_jaco;
@@ -79,7 +79,7 @@ void Newton_System_Solver::SetInverseJacobian(matrix (*inv_jaco)(vector))
     TestDimensionInvJacobian();
 }
 
-// Test dimension
+/// Test dimension
 void Newton_System_Solver::TestDimensionInvJacobian() const
 {
     matrix foo = inv_jacobian(guess);
@@ -105,6 +105,6 @@ void Newton_System_Solver::TestDimensionInvJacobian() const
 }
 
 
-// ########################## External functions #################################
+/// ########################## External functions #################################
 
 
