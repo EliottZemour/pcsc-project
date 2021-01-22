@@ -5,7 +5,7 @@
  *
  */
 
-#include "Bisection_Solver.hpp"
+#include "../src/Bisection_Solver.hpp"
 #include <iostream>
 #include <cmath>
 

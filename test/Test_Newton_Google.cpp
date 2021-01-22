@@ -2,11 +2,11 @@
 // Created by Eliott on 21/01/2021.
 //
 
-#include "Newton_Solver.hpp"
+#include "../src/Newton_Solver.hpp"
 #include <iostream>
 #include <cmath>
 #include <gtest/gtest.h>
-#include "exc/DivBy0Exception.hpp"
+#include "../src/exc/DivBy0Exception.hpp"
 
 double function_xcube (double x)
 {

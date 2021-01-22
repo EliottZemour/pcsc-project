@@ -2,9 +2,9 @@
 // Created by Eliott on 21/01/2021.
 //
 
-#include "Aitken_Accelerator.hpp"
-#include "Chord_Solver.hpp"
-#include "Newton_Solver.hpp"
+#include "../src/Aitken_Accelerator.hpp"
+#include "../src/Chord_Solver.hpp"
+#include "../src/Newton_Solver.hpp"
 #include <chrono>
 #include <iostream>
 #include <cmath>

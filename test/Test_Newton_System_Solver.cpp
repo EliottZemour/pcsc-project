@@ -6,7 +6,7 @@
  * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch> <--- Fill in your name
  */
 
-#include "Newton_System_Solver.hpp"
+#include "../src/Newton_System_Solver.hpp"
 #include <iostream>
 #include <cmath>
 

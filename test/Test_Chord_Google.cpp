@@ -2,7 +2,7 @@
 // Created by Eliott on 21/01/2021.
 //
 
-#include "Chord_Solver.hpp"
+#include "../src/Chord_Solver.hpp"
 #include <iostream>
 #include <cmath>
 #include <gtest/gtest.h>
