@@ -15,6 +15,15 @@ The main source for this project can be found at [https://onlinelibrary.wiley.co
 
 Finally, this project includes an extension to systems of nonlinear equations (NLS) solved by the Newton method in n-dimensions.
 
+## Requirements
+This project relies on the following librairies:
+* GoogleTest
+* <cmath>
+* <chrono>
+* <string>
+* <iostream>
+* <cstdlib>
+
 ## Architecture of the project
 
 ![Imgur](https://i.imgur.com/Oi06fhP.png)
