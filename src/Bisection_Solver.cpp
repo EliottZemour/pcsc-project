@@ -42,7 +42,6 @@ double Bisection_Solver::Solve() const
         mid = (_left + _right)/2.;
         if (fabs(f(mid)) < tolerance)
         {
-            std::cout << "Iteration counter: " << iter_count << std::endl;
             break;
         }
         if (f(mid) < 0)
