@@ -35,10 +35,10 @@ public:
     vector Solve() const override;
 };
 
-// Functions to solve the problem, handling exceptions
-//vector Solve_System_Newton (int dim, vector (*fun)(vector x), matrix (*inv_jaco)(vector x));
-//vector Solve_System_Newton (vector initial_guess, vector (*fun)(vector x), matrix (*inv_jaco)(vector x));
-//vector Solve_System_Newton (int iterations, double epsilon, vector initial_guess, vector (*fun)(vector x),
-//                            matrix (*inv_jaco)(vector x));
+// Functions to solve the problem
+vector Solve_System_Newton (int dim, vector (*fun)(vector x), matrix (*inv_jaco)(vector x));
+vector Solve_System_Newton (vector initial_guess, vector (*fun)(vector x), matrix (*inv_jaco)(vector x));
+vector Solve_System_Newton (int iterations, double epsilon, vector initial_guess, vector (*fun)(vector x),
+                            matrix (*inv_jaco)(vector x));
 
 #endif

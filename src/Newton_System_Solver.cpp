@@ -107,4 +107,27 @@ void Newton_System_Solver::TestDimensionInvJacobian() const
 
 /// ########################## External functions #################################
 
+vector Solve_System_Newton (int dim, vector (*fun)(vector x), matrix (*inv_jaco)(vector x))
+{
+    NLS_Solver* solver = new Newton_System_Solver(dim, fun, inv_jaco);
+    vector solution = solver->Solve();
+    delete solver;
+    return solution;
+}
 
+vector Solve_System_Newton (vector initial_guess, vector (*fun)(vector x), matrix (*inv_jaco)(vector x))
+{
+    NLS_Solver* solver = new Newton_System_Solver(initial_guess, fun, inv_jaco);
+    vector solution = solver->Solve();
+    delete solver;
+    return solution;
+}
+
+vector Solve_System_Newton (int iterations, double epsilon, vector initial_guess, vector (*fun)(vector x),
+                            matrix (*inv_jaco)(vector x))
+{
+    NLS_Solver* solver = new Newton_System_Solver(iterations, epsilon, initial_guess, fun, inv_jaco);
+    vector solution = solver->Solve();
+    delete solver;
+    return solution;
+}

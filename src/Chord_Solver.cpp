@@ -84,18 +84,24 @@ double Chord_Solver::Solve() const
 double Solve_Chord (double (*fun)(double x), bool acc)
 {
     NLE_Solver* solver = new Chord_Solver(fun, acc);
-    return TrySolve(solver);
+    double solution = TrySolve(solver);
+    delete solver;
+    return solution
 }
 
 double Solve_Chord (double initial_guess, double (*fun)(double x), bool acc)
 {
     NLE_Solver* solver = new Chord_Solver(initial_guess, fun, acc);
-    return TrySolve(solver);
+    double solution = TrySolve(solver);
+    delete solver;
+    return solution
 }
 
 double Solve_Chord (int iterations, double epsilon, double initial_guess, double (*fun)(double x), bool acc)
 {
     NLE_Solver* solver = new Chord_Solver(iterations, epsilon, initial_guess, fun, acc);
-    return TrySolve(solver);
+    double solution = TrySolve(solver);
+    delete solver;
+    return solution
 }
 
