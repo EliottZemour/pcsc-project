@@ -74,7 +74,7 @@ double Newton_Solver::Solve() const
         {
             double denominator_acc = f_prime(next);
             IsZero(denominator_acc);
-            double nextnext = next - f(next)/denominator;
+            double nextnext = next - f(next)/denominator_acc;
             next = Accelerate(current, next, nextnext);
         }
 

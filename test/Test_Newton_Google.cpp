@@ -104,9 +104,7 @@ TEST(TestNewton, sinus)
 TEST(TestNewton, complex)
 {
     /*
-     * In this test, there are multiple roots to the function_sinus.
-     * The root towards which the solver converges is determined by the initial guess
-     * Therefore, we test that abs(f(root_found)) is close enough to zero
+     * In this test, we test that abs(f(root_found)) is close enough to zero
      * instead of comparing with the exact solution.
     */
     double (*func)(double x) = &function_complex;
@@ -122,9 +120,7 @@ TEST(TestNewton, complex)
 TEST(TestNewton, polynomial)
 {
     /*
-     * In this test, there are multiple roots to the function_sinus.
-     * The root towards which the solver converges is determined by the initial guess
-     * Therefore, we test that abs(f(root_found)) is close enough to zero
+     * In this test, we test that abs(f(root_found)) is close enough to zero
      * instead of comparing with the exact solution.
     */
     double (*func)(double x) = &function_polynomial;
