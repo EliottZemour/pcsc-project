@@ -4,5 +4,13 @@ Authors: [Cyril Vallez](mailto:cyril.vallez@epfl.ch), [Eliott Zemour](mailto:eli
 GROUP 7.   
 _Implementation of numerical methods for the solution of nonlinear equations._  
 
+The numerical methods implemented are:
+* Bisection,
+* Fixed point methods:
+  * Chord,
+  * Newton
+
+And an acceleration feature through Aitken's delta squared process is also implemented according to this [source](https://en.wikipedia.org/wiki/Aitken%27s_delta-squared_process).  
+The main source for this project can be found [here](https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781118673515.app8)
 
 
