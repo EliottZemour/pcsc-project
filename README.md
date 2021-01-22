@@ -32,9 +32,21 @@ Code example:
     }
     
     double (*func)(double x) = &function;
-    double left = -5.;
-    double right = 5.;
-    double res = Solve_Bisection(func, left, right);
+    double LeftEdge = -5.;
+    double RightEdge = 5.;
+    double solution = Solve_Bisection(func, LeftEdge, RightEdge);
 ```
 * Either by dynamically allocating memory for a NLE Solver object and directly calling its solve function. In this case the user is responsible of deleting the object.
-
+Code example:
+```
+    double function(double x)
+    {
+    // definition of function
+    }
+    
+    double (*func)(double x) = &function;
+    double LeftEdge = -5.;
+    double RightEdge = 5.;
+    NLE_Solver* solver = new Bisection_Solver(func, LeftEdge, RightEdge);
+    double solution = solver->Solve();
+```
