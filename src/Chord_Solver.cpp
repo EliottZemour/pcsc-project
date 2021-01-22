@@ -86,7 +86,7 @@ double Solve_Chord (double (*fun)(double x), bool acc)
     NLE_Solver* solver = new Chord_Solver(fun, acc);
     double solution = TrySolve(solver);
     delete solver;
-    return solution
+    return solution;
 }
 
 double Solve_Chord (double initial_guess, double (*fun)(double x), bool acc)
@@ -94,7 +94,7 @@ double Solve_Chord (double initial_guess, double (*fun)(double x), bool acc)
     NLE_Solver* solver = new Chord_Solver(initial_guess, fun, acc);
     double solution = TrySolve(solver);
     delete solver;
-    return solution
+    return solution;
 }
 
 double Solve_Chord (int iterations, double epsilon, double initial_guess, double (*fun)(double x), bool acc)
@@ -102,6 +102,6 @@ double Solve_Chord (int iterations, double epsilon, double initial_guess, double
     NLE_Solver* solver = new Chord_Solver(iterations, epsilon, initial_guess, fun, acc);
     double solution = TrySolve(solver);
     delete solver;
-    return solution
+    return solution;
 }
 

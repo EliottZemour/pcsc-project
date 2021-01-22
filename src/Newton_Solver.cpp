@@ -105,7 +105,7 @@ double Solve_Newton (double (*fun)(double x), double (*fun_p)(double x), bool ac
     NLE_Solver* solver = new Newton_Solver(fun, fun_p, acc);
     double solution = TrySolve(solver);
     delete solver;
-    return solution
+    return solution;
 }
 
 double Solve_Newton (double initial_guess, double (*fun)(double x), double (*fun_p)(double x), bool acc)
@@ -113,7 +113,7 @@ double Solve_Newton (double initial_guess, double (*fun)(double x), double (*fun
     NLE_Solver* solver = new Newton_Solver(initial_guess, fun, fun_p, acc);
     double solution = TrySolve(solver);
     delete solver;
-    return solution
+    return solution;
 }
 
 double Solve_Newton (int iterations, double epsilon, double initial_guess, double (*fun)(double x),
@@ -122,5 +122,5 @@ double Solve_Newton (int iterations, double epsilon, double initial_guess, doubl
     NLE_Solver* solver = new Newton_Solver(iterations, epsilon, initial_guess, fun, fun_p, acc);
     double solution = TrySolve(solver);
     delete solver;
-    return solution
+    return solution;
 }
