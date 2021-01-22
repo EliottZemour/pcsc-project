@@ -18,11 +18,11 @@ Finally, this project includes an extension to systems of nonlinear equations (N
 ## Requirements
 This project relies on the following librairies:
 * GoogleTest
-* <cmath>
-* <chrono>
-* <string>
-* <iostream>
-* <cstdlib>
+* cmath
+* chrono
+* string
+* iostream
+* cstdlib
 
 ## Architecture of the project
 
