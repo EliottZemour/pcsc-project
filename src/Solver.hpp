@@ -1,12 +1,11 @@
-/*
-* Base class for all solvers
-        *
-        * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch>
-*/
+
 
 #ifndef SOLVER_H
 #define SOLVER_H
 
+/**
+* Base class for all solvers
+*/
 class Solver
 {
 protected:
@@ -14,16 +13,16 @@ protected:
     double tolerance;
 
 public:
-    // Constructor and destructor
+    /// Constructor and destructor
     Solver();
     Solver(int iterations, double epsilon);
     virtual ~Solver();
 
-    // Setters
+    /// Setters
     void SetMaxIter(int iter);
     void SetTolerance(double epsilon);
 
-    // Getters
+    /// Getters
     int GetMaxIter () const {return max_iter;}
     double GetTolerance() const {return tolerance;}
 

@@ -1,15 +1,13 @@
-/*
-* Class for Exceptions
-        *
-        * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch>
-*/
+
 
 #ifndef EXCEPTION_H
 #define EXCEPTION_H
 
 #include <iostream>
 #include <string>
-
+/**
+* Class for Exceptions. This is the superclass and any exception has to be derived from it.
+*/
 class Exception {
 
 protected:
@@ -19,17 +17,17 @@ protected:
 
     public:
 
-    // Constructor
+    /// Constructor
     Exception(std::string problem_);
 
-    // Constructor
+    /// Constructor
     Exception(std::string tag_, std::string problem_);
 
-    // Getters
+    /// Getters
     std::string GetTag () const {return tag;}
     std::string GetProblem () const {return problem;}
 
-    // Method
+    /// Method
     void PrintDebug () const;
 
 };

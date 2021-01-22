@@ -1,8 +1,4 @@
-/*
-* Base class for systems of non-linear equations solver
-        *
-        * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch>
-*/
+
 
 #ifndef NLS_SOLVER_H
 #define NLS_SOLVER_H
@@ -24,6 +20,10 @@ double norm (vector a, int p=2);
 
 // ############################# Class ####################################
 
+/**
+* Base class for systems of non-linear equations solver
+*/
+
 class NLS_Solver : public Solver
 {
 protected:
@@ -32,26 +32,26 @@ protected:
     vector (*f)(vector x);
 
 public:
-    // Constructor and destructor
+    /// Constructor and destructor
     NLS_Solver(int dim, vector (*function)(vector x));
     NLS_Solver(vector initial_guess, vector (*function)(vector x));
     NLS_Solver(int iterations, double epsilon, vector initial_guess, vector (*function)(vector x));
     virtual ~NLS_Solver();
 
-    // Setters
+    /// Setters
     void SetGuess(vector initial_guess);
     void SetFunction(vector (*function)(vector x));
     void SetDimension(int dim);
 
-    // Getters
+    /// Getters
     vector GetGuess () const {return guess;}
     vector EvaluateFunction (vector x) const {return f(x);}
     int GetDimension () const {return dimension;}
 
-    // To test whether the dimension of the function f is correct
+    /// To test whether the dimension of the function f is correct
     void TestDimensionFunction () const;
 
-    // Virtual function to solve the NLS
+    /// Virtual function to solve the NLS
     virtual vector Solve() const = 0;
 };
 

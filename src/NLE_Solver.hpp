@@ -8,7 +8,9 @@
 #define NLE_SOLVER_H
 
 #include "Solver.hpp"
-
+/**
+ * Nonlinear equation superclass (virtual)
+ */
 class NLE_Solver : public Solver
 {
 protected:
@@ -16,26 +18,26 @@ protected:
     double (*f)(double x);
 
 public:
-    // Constructor and destructor
+    /// Constructor and destructor
     NLE_Solver();
     NLE_Solver(double (*function)(double x));
     NLE_Solver(double initial_guess, double (*function)(double x));
     NLE_Solver(int iterations, double epsilon, double initial_guess, double (*function)(double x));
     virtual ~NLE_Solver();
 
-    // Setters
+    /// Setters
     void SetGuess(double initial_guess);
     void SetFunction(double (*function)(double x));
 
-    // Getters
+    /// Getters
     double GetGuess () const {return guess;}
     double EvaluateFunction (double x) const {return f(x);}
 
-    // Virtual function to solve the NLE
+    /// Virtual function to solve the NLE
     virtual double Solve() const = 0;
 };
 
-// Check if a denominator is zero and throw exception if it is the case
+/// Check if a denominator is zero and throw exception if it is the case
 void IsZero (double denominator);
 
 #endif

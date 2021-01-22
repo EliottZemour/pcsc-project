@@ -10,18 +10,18 @@
 #include <iostream>
 #include <cstdlib>
 
-// Default Constructor
+/// Default Constructor
 Newton_Solver::Newton_Solver()
 : Fixed_Point_Solver(), f_prime(nullptr) {}
 
-// Constructor
+/// Constructor
 Newton_Solver::Newton_Solver(double (*fun)(double), double (*fun_p)(double), bool acceleration)
 : Fixed_Point_Solver(fun, acceleration)
 {
     SetDerivative(fun_p);
 }
 
-// Constructor
+/// Constructor
 Newton_Solver::Newton_Solver(double initial_guess, double (*fun)(double x), double (*fun_p)(double x),
                              bool acceleration)
 : Fixed_Point_Solver(initial_guess, fun, acceleration)
@@ -29,7 +29,7 @@ Newton_Solver::Newton_Solver(double initial_guess, double (*fun)(double x), doub
     SetDerivative(fun_p);
 }
 
-// Constructor
+/// Constructor
 Newton_Solver::Newton_Solver(int iterations, double epsilon, double initial_guess, double (*fun)(double x),
                              double (*fun_p)(double x), bool acceleration)
 : Fixed_Point_Solver(iterations, epsilon, initial_guess, fun, acceleration)
@@ -37,11 +37,11 @@ Newton_Solver::Newton_Solver(int iterations, double epsilon, double initial_gues
     SetDerivative(fun_p);
 }
 
-// Destructor
+/// Destructor
 Newton_Solver::~Newton_Solver() {}
 
 
-//Setter
+/// Setter
 void Newton_Solver::SetDerivative(double (*fun_p)(double))
 {
     f_prime = fun_p;
@@ -55,7 +55,7 @@ void Newton_Solver::SetDerivative(double (*fun_p)(double))
     }
 }
 
-// Override of the solve function
+/// Override of the solve function
 double Newton_Solver::Solve() const
 {
     double current = guess;
@@ -98,7 +98,7 @@ double Newton_Solver::Solve() const
     return current;
 }
 
-//############################## External functions ##################################
+///############################## External functions ##################################
 
 double Solve_Newton (double (*fun)(double x), double (*fun_p)(double x), bool acc)
 {

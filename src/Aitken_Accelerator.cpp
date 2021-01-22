@@ -1,10 +1,7 @@
-//
-// Created by Eliott on 07/12/2020.
-//
 
 #include "Aitken_Accelerator.hpp"
 
-// Acceleration method
+/// Acceleration method
 double Accelerate(double current, double next, double nextnext)
 {
     double acc_next;

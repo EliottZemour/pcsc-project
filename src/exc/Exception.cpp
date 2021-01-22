@@ -1,8 +1,3 @@
-/*
-* Class for Exceptions
-        *
-        * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch>
-*/
 
 #include "Exception.hpp"
 #include <string>

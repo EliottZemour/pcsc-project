@@ -1,7 +1,5 @@
-/*
+/**
 * Class for solving NLE using classical chord method
-        *
-        * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch>
 */
 
 #include "Chord_Solver.hpp"
@@ -9,27 +7,27 @@
 #include <iostream>
 #include "Aitken_Accelerator.hpp"
 
-// Default Constructor
+/// Default Constructor
 Chord_Solver::Chord_Solver()
 : Fixed_Point_Solver() {}
 
-// Constructor
+/// Constructor
 Chord_Solver::Chord_Solver(double (*function)(double), bool acceleration)
 : Fixed_Point_Solver(function, acceleration) {}
 
-// Constructor
+/// Constructor
 Chord_Solver::Chord_Solver(double initial_guess, double (*function)(double), bool acceleration)
 : Fixed_Point_Solver(initial_guess, function, acceleration) {}
 
-// Constructor
+/// Constructor
 Chord_Solver::Chord_Solver(int iterations, double epsilon, double initial_guess, double (*function)(double x),
                            bool acceleration)
 : Fixed_Point_Solver(iterations, epsilon, initial_guess, function, acceleration) {}
 
-// Destructor
+/// Destructor
 Chord_Solver::~Chord_Solver() {}
 
-// Override of the solve function
+/// Override of the solve function
 double Chord_Solver::Solve() const
 {
     double current = guess;
@@ -81,7 +79,7 @@ double Chord_Solver::Solve() const
 
 }
 
-//################################ External functions #################################
+///################################ External functions #################################
 
 double Solve_Chord (double (*fun)(double x), bool acc)
 {

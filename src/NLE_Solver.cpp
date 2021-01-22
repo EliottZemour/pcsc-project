@@ -1,7 +1,5 @@
-/*
+/**
 * Base class for non-linear equations solver
-        *
-        * 	   Author: Cyril Vallez <cyril.vallez@epfl.ch>
 */
 
 #include "NLE_Solver.hpp"
@@ -11,36 +9,36 @@
 #include <cstdlib>
 #include <cmath>
 
-// Default Constructor
+/// Default Constructor
 NLE_Solver::NLE_Solver()
 : Solver(), guess(1.), f(nullptr) {}
 
-// Constructor
+/// Constructor
 NLE_Solver::NLE_Solver(double (*function)(double x))
 : Solver(), guess(1.)
 {
     SetFunction(function);
 }
 
-// Constructor
+/// Another Constructor
 NLE_Solver::NLE_Solver(double initial_guess, double (*function)(double))
 : Solver(), guess(initial_guess)
 {
     SetFunction(function);
 }
 
-// Constructor
+/// Another Constructor
 NLE_Solver::NLE_Solver(int iterations, double epsilon, double initial_guess, double (*function)(double x))
 : Solver(iterations, epsilon), guess(initial_guess)
 {
     SetFunction(function);
 }
 
-// Destructor
+/// Destructor
 NLE_Solver::~NLE_Solver() {}
 
 
-// Setter
+/// Setter
 void NLE_Solver::SetGuess(double initial_guess)
 {
     guess = initial_guess;
@@ -59,7 +57,7 @@ void NLE_Solver::SetFunction(double (*function)(double))
     }
 }
 
-//################################### External function #################################
+/// ################################### External function #################################
 
 void IsZero (double denominator)
 {
