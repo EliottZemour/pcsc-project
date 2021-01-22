@@ -11,6 +11,10 @@ The numerical methods implemented are:
   * Newton
 
 And an acceleration feature through Aitken's delta squared process is also implemented according to this [source](https://en.wikipedia.org/wiki/Aitken%27s_delta-squared_process).  
-The main source for this project can be found [here](https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781118673515.app8)
+The main source for this project can be found at [https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781118673515.app8](https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781118673515.app8).
+
+Finally, this project includes an extension to systems of nonlinear equations (NLS) solved by the Newton method in n-dimensions.
+
+## 
 
 
