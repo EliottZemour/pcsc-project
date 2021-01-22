@@ -15,6 +15,8 @@ The main source for this project can be found at [https://onlinelibrary.wiley.co
 
 Finally, this project includes an extension to systems of nonlinear equations (NLS) solved by the Newton method in n-dimensions.
 
-## Main architecture of the project
+## Architecture of the project
+
+[![Screenshot of the architecture](https://imgur.com/mxVln6Y](https://i.imgur.com/mxVln6Y.jpg)
 
 
