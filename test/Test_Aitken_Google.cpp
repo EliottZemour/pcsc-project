@@ -2,7 +2,7 @@
  * Aitken accelerator testing file
  * In order to reproduce the results mentioned in the report,
  * comment the output lines in the Solve methods for Chord and Newton solver
- * Finally, uncomment the google tests from line
+ * Finally, uncomment the google tests from line 53 to 116
 */
 
 #include "../src/Aitken_Accelerator.hpp"
@@ -80,10 +80,10 @@ TEST(TestAitken, acc_chord)
     EXPECT_LE(duration_acc.count(), duration.count());
 
 }
-  */
 
 
-/*
+
+
 TEST(TestAitken, acc_newton)
 {
     double (*func)(double x) = &function_sinus;

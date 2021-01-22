@@ -39,6 +39,9 @@ add_executable(Test_Newton test/Test_Newton_Solver.cpp src/Newton_Solver.cpp src
 
 add_executable(Test_System_Newton test/Test_Newton_System_Solver.cpp src/Newton_System_Solver.cpp src/NLS_Solver.cpp src/Solver.cpp)
 
+add_executable(Test_Newton_System_Google test/Test_Newton_System_Google.cpp src/Newton_System_Solver.cpp src/NLS_Solver.cpp src/Solver.cpp src/exc/Exception.cpp src/exc/DivBy0Exception.cpp)
+target_link_libraries(Test_Newton_System_Google gtest_main gtest pthread pcsc)
+
 add_executable(Test_Aitken_Accelerator test/Test_Aitken_Accelerator.cpp src/Aitken_Accelerator.cpp)
 
 add_executable(Test_Aitken_Google test/Test_Aitken_Google.cpp src/Aitken_Accelerator.cpp src/Fixed_Point_Solver.cpp src/Newton_Solver.cpp src/Chord_Solver.cpp src/NLE_Solver.cpp src/Solver.cpp src/exc/Exception.cpp src/exc/DivBy0Exception.cpp)

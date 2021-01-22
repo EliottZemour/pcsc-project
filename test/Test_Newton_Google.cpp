@@ -81,6 +81,8 @@ TEST(TestNewton, nullderivative)
     NLE_Solver* solver = new Newton_Solver(max_iter, tol, guess, func, func_p);
 
     ASSERT_THROW(solver->Solve(), DivBy0Exception);
+
+    delete solver;
 }
 
 TEST(TestNewton, sinus)
