@@ -49,4 +49,5 @@ Code example:
     double RightEdge = 5.;
     NLE_Solver* solver = new Bisection_Solver(func, LeftEdge, RightEdge);
     double solution = solver->Solve();
+    delete solver;
 ```
