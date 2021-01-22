@@ -28,7 +28,7 @@ This project relies on the following librairies:
 
 ![Imgur](https://i.imgur.com/Oi06fhP.png)
 
-A Doxygen generated documentation is also available within the repository.
+A Doxygen generated documentation is also available within the 'html' folder of the repository.
 
 ## How to use
 There are several ways to use the numerical methods implemented:
