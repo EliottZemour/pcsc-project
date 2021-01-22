@@ -26,9 +26,15 @@ There are several ways to use the numerical methods implemented:
 * Either though out of class methods Solve_Newton, Solve_Chord, Solve_Bisection are designed to instantiate the NLE Solver objects, call their own solve function to obtain the solution and then delete them.
 Code example:
 ```
-    /* double function(double x) being defined above */
+    double function(double x)
+    {
+    // definition of function
+    }
+    
     double (*func)(double x) = &function;
-    double res = Solve_Bisection(func, -1, 4);
+    double left = -5.;
+    double right = 5.;
+    double res = Solve_Bisection(func, left, right);
 ```
 * Either by dynamically allocating memory for a NLE Solver object and directly calling its solve function. In this case the user is responsible of deleting the object.
 
