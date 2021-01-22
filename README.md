@@ -2,7 +2,7 @@
 
 Authors: [Cyril Vallez](mailto:cyril.vallez@epfl.ch), [Eliott Zemour](mailto:eliott.zemour@epfl.ch).   
 GROUP 7.   
-_Implementation of numerical methods for the solution of nonlinear equations._  
+_Implementation of numerical methods for the solution of nonlinear equations (NLE)._  
 
 The numerical methods implemented are:
 * Bisection,
