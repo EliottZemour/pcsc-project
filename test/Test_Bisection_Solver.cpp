@@ -20,6 +20,8 @@ double function_sinus (double x) {
     return sin(x) - 1 / 2.;
 }
 
+
+
 int main(int argc, char *argv[])
 {
 
